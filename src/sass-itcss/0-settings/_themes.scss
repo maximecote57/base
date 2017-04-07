@@ -1,0 +1,18 @@
+// You should use colors previously set in _colors.scss
+// Those variables are used when using the 'theme' mixin
+
+$themes-colors: (
+    category_1: map-get($colors, orange-medium),
+    category_2: map-get($colors, red-medium),
+    category_3: map-get($colors, green-medium),
+    category_4: map-get($colors, blue-light),
+    category_5: map-get($colors, purple)
+);
+
+$themes-colors--hover: (
+    category_1: map-get($colors, orange-dark),
+    category_2: map-get($colors, red-darker),
+    category_3: map-get($colors, green-dark),
+    category_4: map-get($colors, turquoise),
+    category_5: map-get($colors, purple-dark)
+);

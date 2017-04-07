@@ -1,0 +1,25 @@
+//  This mixin is used to the customize an element based on the colors set in 0-settings/_themes.scss
+//
+//  The first argument is required. It is the CSS property you want to change.
+//
+//  You can specity if you also want to customize the property on hover, using the $add-hover argument.
+//
+//  You can also customize both the element where the mixin is called, OR a child of the element if a $child-selector argument is passed
+//  This is especially useful for the times when you don't have access to the child elements, like when they are generated via a WYSIWYG in a CMS.
+
+@mixin theme($property, $add-hover: false, $child-selector: null)
+    @each $class, $color in $themes-colors
+        @if $child-selector == null
+            &.#{$class}
+                #{$property}: $color
+        @else
+            &.#{$class} #{$child-selector}
+                #{$property}: $color
+    @if $add-hover
+        @each $class, $color in $themes-colors--hover
+            @if $child-selector == null
+                &.#{$class}:hover
+                    #{$property}: $color
+            @else
+                &.#{$class} #{$child-selector}:hover
+                    #{$property}: $color

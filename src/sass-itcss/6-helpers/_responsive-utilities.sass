@@ -1,0 +1,10 @@
+// Taken from Bootstrap 4
+// More info on how ot use responsive utilities there : https://v4-alpha.getbootstrap.com/layout/responsive-utilities/
+
+@each $bp in map-keys($breakpoints-min)
+    .hidden-#{$bp}-up
+        @include media-breakpoint-up($bp)
+            display: none !important
+    .hidden-#{$bp}-down
+        @include media-breakpoint-down($bp)
+            display: none !important

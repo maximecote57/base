@@ -1,0 +1,18 @@
+// These are the main breakpoints of the website
+// Use $breakpoints-min when doing @media (min-width)
+// Use $breakpoints-max when doing @media (max-width)
+
+$breakpoints-min: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+);
+
+$breakpoints-max: (
+    xs: 575px,
+    sm: 767px,
+    md: 991px,
+    lg: 1199px
+);

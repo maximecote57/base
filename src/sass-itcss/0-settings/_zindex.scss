@@ -1,0 +1,10 @@
+// A z-index map is useful to prevent z-index messes
+// Please use only these values when using z-index
+
+$z-indexes: (
+    lower: 1,
+    low: 5,
+    medium: 10,
+    high: 15,
+    higher: 20
+);

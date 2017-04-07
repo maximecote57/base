@@ -1,0 +1,36 @@
+// Taken from Bootstrap 4
+// More info there : https://v4-alpha.getbootstrap.com/utilities/typography/
+
+.text-justify
+    text-align: justify !important
+
+.text-nowrap
+    white-space: nowrap !important
+
+.text-lowercase
+    text-transform: lowercase !important
+
+.text-uppercase
+    text-transform: uppercase !important
+
+.text-capitalize
+    text-transform: capitalize !important
+
+.font-weight-normal
+    font-weight: normal
+
+.font-weight-bold
+    font-weight: bold
+
+.font-italic
+    font-style: italic
+
+@each $breakpoint in map-keys($breakpoints-min)
+    @include media-breakpoint-up($breakpoint)
+        $infix: breakpoint-infix($breakpoint, $breakpoints-min)
+        .text#{$infix}-left
+            text-align: left !important
+        .text#{$infix}-right
+            text-align: right !important
+        .text#{$infix}-center
+            text-align: center !important
