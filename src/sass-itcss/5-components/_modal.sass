@@ -1,2 +1,46 @@
 // A modal is a dialog box/popup window that is displayed on top of the current page
+
+$close-btn-size: 30px
+
 .modal
+    position: fixed
+    top: 200px
+    display: flex
+    flex-direction: column
+    left: 50%
+    width: 500px
+    background-color: white
+    border-radius: 5px
+    border: solid 1px #dedede
+    z-index: map-get($z-indexes, higher)
+    visibility: hidden
+    opacity: 0
+    transform: translateX(-50%) scale(0)
+    transition: visibility map-get($transitions-times, normal), opacity map-get($transitions-times, normal), transform map-get($transitions-times, normal) cubic-bezier(0.215, 0.61, 0.355, 1) map-get($transitions-times, normal)
+    &.is-visible
+        visibility: visible
+        opacity: 1
+        transform: translateX(-50%) scale(1)
+        transition: visibility map-get($transitions-times, normal), opacity map-get($transitions-times, normal), transform map-get($transitions-times, normal) cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s
+    &__header
+        padding: 10px
+        border-bottom: solid 1px #dedede
+    &__content
+        padding: 10px
+    &__footer
+        padding: 10px
+        border-top: solid 1px #dedede
+    &__close-btn
+        position: absolute
+        top: -#{$close-btn-size * 0.5}
+        right: -#{$close-btn-size * 0.5}
+        display: flex
+        align-items: center
+        justify-content: center
+        width: $close-btn-size
+        height: $close-btn-size
+        border-radius: 50%
+        background-color: black
+        color: white
+        font-size: 1rem
+        cursor: pointer

@@ -1,6 +1,8 @@
 // A dimmer hides distractions to focus attention on particular content by making the whole screen black with a variable opacity
 
 .dimmer
+    visibility: hidden
+    opacity: 0
     position: fixed
     top: 0
     left: 0
@@ -8,5 +10,9 @@
     height: 100%
     background-color: rgba(0, 0, 0, 0.8)
     z-index: map_get($z-indexes, medium)
+    transition: visibility 0.5s, opacity 0.5s
+    &.is-visible
+        visibility: visible
+        opacity: 1
     &__content
         z-index: map_get($z-indexes, high)

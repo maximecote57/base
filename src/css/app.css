@@ -1005,13 +1005,20 @@ img {
   border-radius: 0 0 5px 5px; }
 
 .dimmer {
+  visibility: hidden;
+  opacity: 0;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 10; }
+  z-index: 10;
+  -webkit-transition: visibility 0.5s, opacity 0.5s;
+  transition: visibility 0.5s, opacity 0.5s; }
+  .dimmer.is-visible {
+    visibility: visible;
+    opacity: 1; }
   .dimmer__content {
     z-index: 15; }
 
@@ -1099,6 +1106,68 @@ img {
       left: 0; }
     .input-container__icon--position-right {
       right: 0; }
+
+.modal {
+  position: fixed;
+  top: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  left: 50%;
+  width: 500px;
+  background-color: white;
+  border-radius: 5px;
+  border: solid 1px #dedede;
+  z-index: 20;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: translateX(-50%) scale(0);
+          transform: translateX(-50%) scale(0);
+  -webkit-transition: visibility 0.5s, opacity 0.5s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+  transition: visibility 0.5s, opacity 0.5s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+  transition: visibility 0.5s, opacity 0.5s, transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+  transition: visibility 0.5s, opacity 0.5s, transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s; }
+  .modal.is-visible {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: translateX(-50%) scale(1);
+            transform: translateX(-50%) scale(1);
+    -webkit-transition: visibility 0.5s, opacity 0.5s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s;
+    transition: visibility 0.5s, opacity 0.5s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s;
+    transition: visibility 0.5s, opacity 0.5s, transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s;
+    transition: visibility 0.5s, opacity 0.5s, transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s; }
+  .modal__header {
+    padding: 10px;
+    border-bottom: solid 1px #dedede; }
+  .modal__content {
+    padding: 10px; }
+  .modal__footer {
+    padding: 10px;
+    border-top: solid 1px #dedede; }
+  .modal__close-btn {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer; }
 
 .sidebar {
   display: none; }
