@@ -1,0 +1,9 @@
+archive
+node_modules
+.idea
+.editorconfig
+.gitattributes
+.jscsrc
+.jshintrc
+.travis.yml
+./src/package.json
