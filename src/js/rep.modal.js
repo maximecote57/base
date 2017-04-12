@@ -1,6 +1,4 @@
-// Modal
-
-$(function () {
+;$(function () {
 
     function openModal($modal) {
 
