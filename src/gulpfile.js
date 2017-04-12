@@ -1,24 +1,13 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
+var reload = browserSync.reload;
 var sass = require('gulp-sass');
 var cssmin = require('gulp-cssmin');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var uglify = require('gulp-uglify');
 var globbing = require('gulp-css-globbing');
-var gulpConcat = require('gulp-concat');
-
-gulp.task('watch', function () {
-    gulp.watch('./sass-itcss/**/*.sass', ['sass']);
-});
-
-gulp.task('browser-sync', function() {
-    browserSync.init({
-        proxy: "http://localhost:80",
-        files: "./project/static/css/*.css",
-        open: false
-    });
-});
+var filter = require('gulp-filter');
 
 gulp.task('sass', function () {
     gulp.src('./sass-itcss/app.sass')
@@ -31,7 +20,19 @@ gulp.task('sass', function () {
         // .pipe(cssmin())
         .pipe(sourcemaps.write('/'))
         .pipe(gulp.dest('./css'))
-        .pipe(browserSync.stream());
+        .pipe(filter(['**/*.css']))
+        .pipe(reload({stream: true}));
 });
 
-gulp.task('default', ['sass','browser-sync', 'watch']);
+// Static Server + watching scss/html files
+gulp.task('serve', ['sass'], function() {
+
+    browserSync.init({
+        proxy: 'http://localhost:80',
+        open: false
+    });
+
+    gulp.watch('./sass-itcss/**/*.sass', ['sass']);
+});
+
+gulp.task('default', ['serve']);
