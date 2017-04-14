@@ -6,13 +6,60 @@
 // A button is a button, in this case it will be a submit button most of the time. Use a 'button' class and the good modifiers in conjunction
 // A well is a block of text with border and padding, most of the time at the bottom of the form
 
+$icon-width: 20px
+$placeholder-focus-padding-top: 10px
+$input-and-label-default-font-size: 1em
+$placeholder-label-small-font-size: calc(#{$input-and-label-default-font-size} / 1.5)
+$field-border-radius: 5px
+
 .form
+    font-size: 1rem
     &__section-header
     &__field
+        position: relative
+        display: inline-flex
+        padding: 0 0.8em
+        border: solid 1px map_get($colors, gray-light)
+        border-radius: $field-border-radius
         &.has-error
         &-label
+            &--is-left
+                border-top-left-radius: $field-border-radius
+                border-bottom-left-radius: $field-border-radius
+            &--is-right
+                border-top-right-radius: $field-border-radius
+                border-bottom-right-radius: $field-border-radius
+            &--is-placeholder
+                cursor: text
+                font-size: $input-and-label-default-font-size
+                transition: font-size map_get($transitions-times, normal), top map_get($transitions-times, normal), transform map_get($transitions-times, normal)
+                &.is-focus
+                    top: $placeholder-focus-padding-top
+                    font-size: $placeholder-label-small-font-size
+                    transform: translateY(0)
         &-element
-            &--radio
-            &--checkbox
+            border: none
+            padding-top: calc(#{$placeholder-label-small-font-size} + #{$placeholder-focus-padding-top} + 5px)
+            padding-bottom: 5px
+            font-size: $input-and-label-default-font-size
+            &--has-padding-left
+                padding-left: $icon-width
+            &--has-padding-right
+                padding-right: $icon-width
+            &--has-no-border-radius-left
+                border-top-left-radius: 0
+                border-bottom-left-radius: 0
+            &--has-no-border-radius-right
+                border-top-right-radius: 0
+                border-bottom-right-radius: 0
+            &-icon
+                width: $icon-width
+                text-align: center
+                &--position-left
+                    left: 0
+                &--position-right
+                    right: 0
+                &--radio
+                &--checkbox
     &__btn
     &__well
