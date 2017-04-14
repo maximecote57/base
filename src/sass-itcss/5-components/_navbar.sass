@@ -1,5 +1,100 @@
 // A navigation bar is a navigation header that is placed at the top of the page.
 
 .navbar
-    &__item-container
+    &--position-fixed
+        position: fixed
+    &__container
+        display: flex
+        justify-content: space-between
+        border: solid black 1px
+        @media screen and (max-width: map_get($breakpoints-max, sm))
+            display: none
+            flex-direction: column
+    &__hamburger-container
+        display: flex
+        padding: 20px 0
+        justify-content: flex-end
+        @media screen and (min-width: map_get($breakpoints-min, md))
+            display: none
+    &__hamburger
+        $hamburger: &
+        position: relative
+        width: 2em
+        height: 2em
+        font-size: 1rem
+        cursor: pointer
+        &-line
+            position: absolute
+            left: 0
+            display: block
+            width: 100%
+            height: 0.3em
+            background: black
+            border-radius: 9px
+            opacity: 1
+            transform: rotate(0deg)
+            transition: all map_get($transitions-times, normal) ease-in-out
+            &:nth-child(1)
+                top: 0
+            &:nth-child(2), &:nth-child(3)
+                top: 50%
+                transform: translateY(-50%)
+            &:nth-child(4)
+                bottom: 0
+        &.is-opened
+            #{$hamburger}-line
+                &:nth-child(1)
+                    top: 50%
+                    left: 50%
+                    width: 0
+                &:nth-child(2)
+                    transform: rotate(45deg)
+                &:nth-child(3)
+                    transform: rotate(-45deg)
+                &:nth-child(4)
+                    bottom: 50%
+                    left: 50%
+                    width: 0
+    &__section
+        display: flex
+        &--left
+            justify-content: flex-start
+            @media screen and (max-width: map_get($breakpoints-max, sm))
+                justify-content: center
+        &--right
+            justify-content: flex-end
+            @media screen and (max-width: map_get($breakpoints-max, sm))
+                justify-content: center
+        &--right
+            justify-content: center
+        &--multilevel
+            display: block
+    &__sub-section
+        display: flex
+        justify-content: inherit
+    &__list
+        display: flex
+        @media screen and (max-width: map_get($breakpoints-max, sm))
+            flex-direction: column
+            flex: 1
+            justify-content: center
+    &__item
+        display: flex
+        align-items: center
+        &--align-items-stretch
+            align-items: stretch
+        @media screen and (max-width: map_get($breakpoints-max, sm))
+            justify-content: center
     &__item-link
+        display: flex
+        align-items: center
+        padding: 20px
+        background-color: #dedede
+        text-decoration: none
+        color: black
+        transition: background-color map_get($transitions-times, normal)
+        &:hover
+            background-color: #bfbfbf
+        @media screen and (max-width: map_get($breakpoints-max, sm))
+            flex: 1
+            justify-content: center

@@ -29,7 +29,8 @@ gulp.task('serve', ['sass'], function() {
 
     browserSync.init({
         proxy: 'http://localhost:80',
-        open: false
+        open: false,
+        notify: false
     });
 
     gulp.watch('./sass-itcss/**/*.sass', ['sass']);
