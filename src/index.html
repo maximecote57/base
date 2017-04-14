@@ -15,27 +15,35 @@
 
 	<div class="section">
 		<div class="container">
-			<div>
-				<div class="dropdown js-dropdown">
-					<a class="dropdown__btn js-dropdown-btn" href="javascript:void(0)">Dropdown name<i class="dropdown__caret fa fa-caret-down" aria-hidden="true"></i></a>
-					<ul class="dropdown__list js-dropdown-list">
-						<li class="dropdown__list-item">
-							<a class="dropdown__list-item-link" href="#">Option name</a>
-						</li>
-						<li class="dropdown__list-item">
-							<a class="dropdown__list-item-link" href="#">Option name</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div>
-				test
+			<div class="accordion js-accordion" data-open-item-animation="slide" data-scroll-to-item-when-opened="false" data-scroll-offset="0" data-scroll-to-item-speed="500" data-slide-duration="500" data-can-have-multiple-items-opened="false">
+				<ul class="accordion__list">
+					<li class="accordion__item js-accordion-item">
+						<a class="accordion__item-button js-accordion-item-button js-accordion-item-button">
+							Item 1
+							<i class="accordion__item-button-right-icon accordion__item-button-right-icon--plus fa fa-plus" aria-hidden="true"></i>
+							<i class="accordion__item-button-right-icon fa fa-minus" aria-hidden="true"></i>
+						</a>
+						<div class="accordion__item-content js-accordion-item-content">
+							<p class="accordion__item-text">Item 1 content</p>
+						</div>
+					</li>
+					<li class="accordion__item js-accordion-item">
+						<a class="accordion__item-button js-accordion-item-button">
+							Item 2
+							<i class="accordion__item-button-right-icon accordion__item-button-right-icon--plus fa fa-plus" aria-hidden="true"></i>
+							<i class="accordion__item-button-right-icon fa fa-minus" aria-hidden="true"></i>
+						</a>
+						<div class="accordion__item-content js-accordion-item-content">
+							<p class="accordion__item-text">Item 2 content</p>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
 
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="js/rep.dropdown.js"></script>
+	<script src="js/rep.accordion.js"></script>
 </body>
 </html>

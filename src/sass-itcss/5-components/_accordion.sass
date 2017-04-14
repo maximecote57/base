@@ -1,3 +1,32 @@
 // An accordion allows users to toggle the display of sections of content
 
 .accordion
+    &__list
+        border: solid 1px #dedede
+    &__item
+        $accordion-item: &
+        & + #{&}
+            border-top: solid 1px #dedede
+        &-button
+            position: relative
+            display: flex
+            justify-content: space-between
+            padding: 30px
+            background-color: #a3a3a3
+            &-right-icon
+                position: absolute
+                top: 30px
+                right: 30px
+                font-size: 20px
+                &--plus
+                    transform: scale(1)
+                    transition: transform map_get($transitions-times, normal)
+                    #{$accordion-item}.is-opened &
+                        transform: scale(0)
+                &-container
+                    position: relative
+        &-content
+            display: none
+            padding: 20px
+            border-top: solid 1px #dedede
+        &-text
