@@ -1,6 +1,35 @@
 // A dropdown menu is a toggleable menu that allows the user to choose one value from a predefined list
 
 .dropdown
+    $block: &
+    position: relative
+    display: inline-block
+    font-size: 1rem
+    &__caret
+        margin-left: 0.5em
     &__btn
+        display: inline-flex
+        align-items: center
+        justify-content: space-between
+        border: solid 1px #dedede
+        padding: 0.75em
+        background-color: #dedede
+        text-decoration: none
+        color: black
     &__list
+        position: absolute
+        display: none
+        width: 100%
+        border: solid 1px #dedede
+        border-top: none
+        &--pos-static
+            position: static
     &__list-item
+        & + #{&}
+            border-top: solid 1px #dedede
+    &__list-item-link
+        display: block
+        padding: 0.75em
+        background-color: white
+        text-decoration: none
+        color: black

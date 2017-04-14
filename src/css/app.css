@@ -1028,6 +1028,44 @@ img {
   .dimmer__content {
     z-index: 15; }
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+  font-size: 1rem; }
+  .dropdown__caret {
+    margin-left: 0.5em; }
+  .dropdown__btn {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    border: solid 1px #dedede;
+    padding: 0.75em;
+    background-color: #dedede;
+    text-decoration: none;
+    color: black; }
+  .dropdown__list {
+    position: absolute;
+    display: none;
+    width: 100%;
+    border: solid 1px #dedede;
+    border-top: none; }
+    .dropdown__list--pos-static {
+      position: static; }
+  .dropdown__list-item + .dropdown__list-item {
+    border-top: solid 1px #dedede; }
+  .dropdown__list-item-link {
+    display: block;
+    padding: 0.75em;
+    background-color: white;
+    text-decoration: none;
+    color: black; }
+
 .hamburger {
   position: relative;
   width: 2em;

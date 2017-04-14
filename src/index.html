@@ -12,18 +12,30 @@
 	<link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-	<div class="container">
-		<div class="section">
-			<div class="hamburger js-hamburger">
-				<div class="hamburger__line"></div>
-				<div class="hamburger__line"></div>
-				<div class="hamburger__line"></div>
-				<div class="hamburger__line"></div>
+
+	<div class="section">
+		<div class="container">
+			<div>
+				<div class="dropdown js-dropdown">
+					<a class="dropdown__btn js-dropdown-btn" href="javascript:void(0)">Dropdown name<i class="dropdown__caret fa fa-caret-down" aria-hidden="true"></i></a>
+					<ul class="dropdown__list js-dropdown-list">
+						<li class="dropdown__list-item">
+							<a class="dropdown__list-item-link" href="#">Option name</a>
+						</li>
+						<li class="dropdown__list-item">
+							<a class="dropdown__list-item-link" href="#">Option name</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div>
+				test
 			</div>
 		</div>
 	</div>
-	<div class="dimmer js-dimmer"></div>
+
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="js/rep.hamburger.js"></script>
+	<script src="js/rep.dropdown.js"></script>
 </body>
 </html>
