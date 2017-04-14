@@ -48,7 +48,7 @@
 
         });
 
-        $('.js-modal-close-btn').click(function () {
+        $('.js-close-modal-btn').click(function () {
 
             var $modal = $(this).closest('.modal');
 
