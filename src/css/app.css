@@ -1141,21 +1141,21 @@ input {
       border-bottom-right-radius: 5px; }
     .form__field-label--is-placeholder {
       cursor: text;
-      font-size: 1em;
+      font-size: 1.1em;
       -webkit-transition: font-size 0.5s, top 0.5s, -webkit-transform 0.5s;
       transition: font-size 0.5s, top 0.5s, -webkit-transform 0.5s;
       transition: font-size 0.5s, top 0.5s, transform 0.5s;
       transition: font-size 0.5s, top 0.5s, transform 0.5s, -webkit-transform 0.5s; }
       .form__field-label--is-placeholder.is-focus {
         top: 10px;
-        font-size: calc(1em / 1.5);
+        font-size: calc(1.1em / 1.8);
         -webkit-transform: translateY(0);
                 transform: translateY(0); }
     .form__field-element {
       border: none;
-      padding-top: calc(calc(1em / 1.5) + 10px + 5px);
+      padding-top: calc(calc(1.1em / 1.8) + 10px);
       padding-bottom: 5px;
-      font-size: 1em; }
+      font-size: 1.1em; }
       .form__field-element--has-padding-left {
         padding-left: 20px; }
       .form__field-element--has-padding-right {
