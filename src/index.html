@@ -13,9 +13,10 @@
 </head>
 <body>
 
-	<div class="container-fluid container-fluid--no-padding-desktop">
-		<div class="navbar js-navbar" data-slide-speed="500">
-			<div class="navbar__hamburger-container">
+	<div class="container-fluid container-fluid--no-padding">
+		<div class="navbar navbar--position-fixed js-navbar" data-slide-speed="500">
+			<div class="navbar__mobile-container grid grid--justify-space-between grid--align-center hidden-md-up">
+				<h3 class="navbar__mobile-container-header">Template</h3>
 				<div class="navbar__hamburger js-hamburger">
 					<div class="navbar__hamburger-line"></div>
 					<div class="navbar__hamburger-line"></div>
@@ -23,16 +24,16 @@
 					<div class="navbar__hamburger-line"></div>
 				</div>
 			</div>
-			<div class="navbar__container js-navbar-container">
-				<div class="navbar__section navbar__section--left">
-					<ul class="navbar__list">
-						<li class="navbar__item navbar__item--align-item">
+			<div class="navbar__container grid grid--justify-space-between grid--align-center hidden-sm-down js-navbar-container">
+				<div class="navbar__section">
+					<ul class="navbar__list grid grid--justify-start">
+						<li class="navbar__item">
 							<a class="navbar__item-link" href="#">Link 1</a>
 						</li>
 					</ul>
 				</div>
-				<div class="navbar__section navbar__section--right">
-					<ul class="navbar__list">
+				<div class="navbar__section">
+					<ul class="navbar__list grid grid--justify-end">
 						<li class="navbar__item">
 							<a class="navbar__item-link" href="#">Link 4</a>
 						</li>

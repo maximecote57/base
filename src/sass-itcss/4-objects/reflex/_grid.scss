@@ -12,9 +12,9 @@
     max-width: $reflex-max-width;
 
     // handle nested grids
-    & .#{$reflex-prefix}grid {
-        @include flex(1, 1, auto);
-    }
+    //& .#{$reflex-prefix}grid {
+    //    @include flex(1, 1, auto);
+    //}
 
     // handle when lists are used as a grid
     list-style-type: none;
