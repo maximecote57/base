@@ -1,1 +1,19 @@
+// Custom checkbox using Font Awesome, for better styling, without using any JS
+
+///
+
+    <input class="custom-checkbox" type="checkbox" id="checkbox_id">
+    <label class="grid grid--align-content-center" for="checkbox_id">Checkbox</label>
+
+///
+
 .custom-checkbox
+    display: none
+    & + label:before
+        font-family: FontAwesome
+        display: inline-block
+        content: "\f096"
+        width: 1em
+        margin-right: 0.2em
+    &:checked + label:before
+        content: "\f046"

@@ -104,6 +104,17 @@ input {
     .container {
       width: 1140px; } }
 
+.custom-checkbox {
+  display: none; }
+  .custom-checkbox + label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f096";
+    width: 1em;
+    margin-right: 0.2em; }
+  .custom-checkbox:checked + label:before {
+    content: "\f046"; }
+
 /*! Reflex v1.5.0 - https://github.com/leejordan/reflex */
 /*
  *
