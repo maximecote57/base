@@ -7,14 +7,17 @@
 // A well is a block of text with border and padding, most of the time at the bottom of the form
 
 $icon-width: 20px
-$placeholder-focus-padding-top: 10px
-$input-and-label-default-font-size: 1.1em
-$placeholder-label-small-font-size: calc(#{$input-and-label-default-font-size} / 1.8)
+$placeholder-focus-padding-top: 5px
+$input-and-label-default-font-size: 1em
+$placeholder-label-scale-ratio: 0.6
 $field-border-radius: 5px
+$space-between-scaled-placeholder-and-input: 5px
 
 .form
     font-size: 1rem
     &__section-header
+        width: 100%
+        padding: 1em 0
     &__field
         position: relative
         display: inline-flex
@@ -32,15 +35,15 @@ $field-border-radius: 5px
             &--is-placeholder
                 cursor: text
                 font-size: $input-and-label-default-font-size
-                transition: font-size map_get($transitions-times, normal), top map_get($transitions-times, normal), transform map_get($transitions-times, normal)
+                transform: translateY(-50%) scale(1)
+                transform-origin: 0
+                transition: top map_get($transitions-times, normal), transform map_get($transitions-times, normal)
                 &.is-focus
                     top: $placeholder-focus-padding-top
-                    font-size: $placeholder-label-small-font-size
-                    transform: translateY(0)
+                    transform: translateY(0) scale($placeholder-label-scale-ratio)
         &-element
-            border: none
-            padding-top: calc(#{$placeholder-label-small-font-size} + #{$placeholder-focus-padding-top})
-            padding-bottom: 5px
+            padding-top: calc(#{$input-and-label-default-font-size} * #{$placeholder-label-scale-ratio} + #{$space-between-scaled-placeholder-and-input} + #{$placeholder-focus-padding-top})
+            padding-bottom: $space-between-scaled-placeholder-and-input
             font-size: $input-and-label-default-font-size
             &--has-padding-left
                 padding-left: $icon-width

@@ -10,7 +10,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, input, textarea, button {
   margin: 0;
   padding: 0;
   border: 0;
@@ -1018,6 +1018,20 @@ input {
 .section {
   padding: 3rem 0; }
 
+.slidable-content {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s; }
+  .slidable-content--is-sliding-to-left.is-slided {
+    -webkit-transform: translateX(-30%);
+            transform: translateX(-30%); }
+  .slidable-content--is-sliding-to-right.is-slided {
+    -webkit-transform: translateX(30%);
+            transform: translateX(30%); }
+
 .accordion__list {
   border: solid 1px #dedede; }
 
@@ -1125,6 +1139,9 @@ input {
 
 .form {
   font-size: 1rem; }
+  .form__section-header {
+    width: 100%;
+    padding: 1em 0; }
   .form__field {
     position: relative;
     display: -webkit-inline-box;
@@ -1141,21 +1158,23 @@ input {
       border-bottom-right-radius: 5px; }
     .form__field-label--is-placeholder {
       cursor: text;
-      font-size: 1.1em;
-      -webkit-transition: font-size 0.5s, top 0.5s, -webkit-transform 0.5s;
-      transition: font-size 0.5s, top 0.5s, -webkit-transform 0.5s;
-      transition: font-size 0.5s, top 0.5s, transform 0.5s;
-      transition: font-size 0.5s, top 0.5s, transform 0.5s, -webkit-transform 0.5s; }
+      font-size: 1em;
+      -webkit-transform: translateY(-50%) scale(1);
+              transform: translateY(-50%) scale(1);
+      -webkit-transform-origin: 0;
+              transform-origin: 0;
+      -webkit-transition: top 0.5s, -webkit-transform 0.5s;
+      transition: top 0.5s, -webkit-transform 0.5s;
+      transition: top 0.5s, transform 0.5s;
+      transition: top 0.5s, transform 0.5s, -webkit-transform 0.5s; }
       .form__field-label--is-placeholder.is-focus {
-        top: 10px;
-        font-size: calc(1.1em / 1.8);
-        -webkit-transform: translateY(0);
-                transform: translateY(0); }
+        top: 5px;
+        -webkit-transform: translateY(0) scale(0.6);
+                transform: translateY(0) scale(0.6); }
     .form__field-element {
-      border: none;
-      padding-top: calc(calc(1.1em / 1.8) + 10px);
+      padding-top: calc(1em * 0.6 + 5px + 5px);
       padding-bottom: 5px;
-      font-size: 1.1em; }
+      font-size: 1em; }
       .form__field-element--has-padding-left {
         padding-left: 20px; }
       .form__field-element--has-padding-right {
@@ -1314,9 +1333,41 @@ input {
       width: 0; }
 
 .sidebar {
-  display: none; }
+  position: fixed;
+  top: 0;
+  width: 20%;
+  height: 100%;
+  background-color: lightblue;
+  z-index: 20;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s; }
   .sidebar.is-visible {
-    display: block; }
+    -webkit-transform: translateX(0);
+            transform: translateX(0); }
+  .sidebar--is-left-of-screen {
+    left: 0;
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%); }
+  .sidebar--is-right-of-screen {
+    right: 0;
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%); }
+  .sidebar__list-item {
+    border: solid 1px #dedede;
+    text-align: center; }
+    .sidebar__list-item + .sidebar__list-item {
+      border-top: none; }
+    .sidebar__list-item-link {
+      display: block;
+      padding: 20px;
+      text-decoration: none;
+      color: black;
+      -webkit-transition: background-color 0.5s;
+      transition: background-color 0.5s; }
+      .sidebar__list-item-link:hover {
+        background-color: white; }
 
 .clearfix:after {
   display: table;
