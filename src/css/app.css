@@ -45,10 +45,8 @@ table {
   box-sizing: border-box; }
 
 html {
-  font-size: 16px; }
-  @media screen and (max-width: 767px) {
-    html {
-      font-size: 14px; } }
+  font-size: 16px;
+  font-family: 'Helvetica Neue', sans-serif; }
 
 img {
   max-width: 100%; }
@@ -107,11 +105,13 @@ input {
 .custom-checkbox {
   display: none; }
   .custom-checkbox + label:before {
-    font-family: FontAwesome;
-    display: inline-block;
     content: "\f096";
+    position: relative;
+    top: 1px;
+    display: inline-block;
     width: 1em;
-    margin-right: 0.2em; }
+    margin-right: 0.2em;
+    font-family: FontAwesome; }
   .custom-checkbox:checked + label:before {
     content: "\f046"; }
 

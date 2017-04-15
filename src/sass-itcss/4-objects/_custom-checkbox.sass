@@ -10,10 +10,12 @@
 .custom-checkbox
     display: none
     & + label:before
-        font-family: FontAwesome
-        display: inline-block
         content: "\f096"
+        position: relative
+        top: 1px
+        display: inline-block
         width: 1em
         margin-right: 0.2em
+        font-family: FontAwesome
     &:checked + label:before
         content: "\f046"
