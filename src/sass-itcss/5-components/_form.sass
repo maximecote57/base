@@ -12,27 +12,44 @@ $input-and-label-default-font-size: 1em
 $placeholder-label-scale-ratio: 0.6
 $field-border-radius: 5px
 $space-between-scaled-placeholder-and-input: 5px
+$fields-vertical-gutter: 0.8em
+$fields-horizontal-gutter: 0.8em
 
 .form
     font-size: 1rem
     &__section-header
         width: 100%
         padding: 1em 0
+    &__fields-container
+        margin: -#{$fields-vertical-gutter} -#{$fields-horizontal-gutter}
+    &__field-container
+        padding: $fields-vertical-gutter $fields-horizontal-gutter
     &__field
+        $form-field: &
         position: relative
-        display: inline-flex
-        padding: 0 0.8em
-        border: solid 1px map_get($colors, gray-light)
-        border-radius: $field-border-radius
+        display: flex
+        flex-wrap: wrap
+        align-items: center
         &.has-error
+        &--has-resizing-placeholder
+            padding: 0 1em
+            border: solid 1px map_get($colors, gray-light)
+            border-radius: $field-border-radius
         &-label
+            margin-bottom: 5px
             &--is-left
                 border-top-left-radius: $field-border-radius
                 border-bottom-left-radius: $field-border-radius
             &--is-right
                 border-top-right-radius: $field-border-radius
                 border-bottom-right-radius: $field-border-radius
-            &--is-placeholder
+            &--is-inline
+                width: auto
+                margin-bottom: 0
+                margin-right: 5px
+            #{$form-field}--has-resizing-placeholder &
+                @extend .absolute-centered-element
+                @extend .absolute-centered-element--is-centered-vertically
                 cursor: text
                 font-size: $input-and-label-default-font-size
                 transform: translateY(-50%) scale(1)
@@ -41,10 +58,22 @@ $space-between-scaled-placeholder-and-input: 5px
                 &.is-focus
                     top: $placeholder-focus-padding-top
                     transform: translateY(0) scale($placeholder-label-scale-ratio)
+            #{$form-field}--has-inline-label &
+                margin-bottom: 0
+                padding-right: 5px
         &-element
-            padding-top: calc(#{$input-and-label-default-font-size} * #{$placeholder-label-scale-ratio} + #{$space-between-scaled-placeholder-and-input} + #{$placeholder-focus-padding-top})
-            padding-bottom: $space-between-scaled-placeholder-and-input
+            width: 100%
+            padding: 0.8em
             font-size: $input-and-label-default-font-size
+            border: solid 1px map_get($colors, gray-light)
+            border-radius: $field-border-radius
+            #{$form-field}--has-resizing-placeholder &
+                border: none
+                padding: 0
+                padding-top: calc(#{$input-and-label-default-font-size} * #{$placeholder-label-scale-ratio} + #{$space-between-scaled-placeholder-and-input} + #{$placeholder-focus-padding-top})
+                padding-bottom: $space-between-scaled-placeholder-and-input
+            #{$form-field}--has-inline-label &
+                flex: 1
             &--has-padding-left
                 padding-left: $icon-width
             &--has-padding-right
@@ -65,4 +94,9 @@ $space-between-scaled-placeholder-and-input: 5px
                 &--radio
                 &--checkbox
     &__btn
+        margin-top: 1em
+        padding: 1em
     &__well
+        margin-top: 1em
+        padding: 1em
+        background-color: lightblue
