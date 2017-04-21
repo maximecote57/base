@@ -6,24 +6,18 @@
 // A button is a button, in this case it will be a submit button most of the time. Use a 'button' class and the good modifiers in conjunction
 // A well is a block of text with border and padding, most of the time at the bottom of the form
 
-$icon-width: 20px
-$placeholder-focus-padding-top: 5px
+$icon-width: 3em
 $input-and-label-default-font-size: 1em
-$placeholder-label-scale-ratio: 0.6
+$placeholder-label-scale-ratio: 0.7
 $field-border-radius: 5px
+$space-between-scaled-placeholder-and-top-of-field: 5px
 $space-between-scaled-placeholder-and-input: 5px
-$fields-vertical-gutter: 0.8em
-$fields-horizontal-gutter: 0.8em
 
 .form
     font-size: 1rem
     &__section-header
         width: 100%
         padding: 1em 0
-    &__fields-container
-        margin: -#{$fields-vertical-gutter} -#{$fields-horizontal-gutter}
-    &__field-container
-        padding: $fields-vertical-gutter $fields-horizontal-gutter
     &__field
         $form-field: &
         position: relative
@@ -36,31 +30,28 @@ $fields-horizontal-gutter: 0.8em
             border: solid 1px map_get($colors, gray-light)
             border-radius: $field-border-radius
         &-label
-            margin-bottom: 5px
-            &--is-left
-                border-top-left-radius: $field-border-radius
-                border-bottom-left-radius: $field-border-radius
-            &--is-right
-                border-top-right-radius: $field-border-radius
-                border-bottom-right-radius: $field-border-radius
-            &--is-inline
-                width: auto
-                margin-bottom: 0
-                margin-right: 5px
+            margin-bottom: 0.5em
             #{$form-field}--has-resizing-placeholder &
                 @extend .absolute-centered-element
                 @extend .absolute-centered-element--is-centered-vertically
+                margin-bottom: 0
                 cursor: text
                 font-size: $input-and-label-default-font-size
-                transform: translateY(-50%) scale(1)
+                z-index: map_get($z-indexes, medium)
+                transform: translateY(-50%) scale(1) perspective(0)
                 transform-origin: 0
                 transition: top map_get($transitions-times, normal), transform map_get($transitions-times, normal)
                 &.is-focus
-                    top: $placeholder-focus-padding-top
-                    transform: translateY(0) scale($placeholder-label-scale-ratio)
+                    top: $space-between-scaled-placeholder-and-top-of-field
+                    transform: translateY(0) scale($placeholder-label-scale-ratio) perspective(1px)
             #{$form-field}--has-inline-label &
                 margin-bottom: 0
-                padding-right: 5px
+                padding-right: 1em
+        &-element-container
+            position: relative
+            width: 100%
+            #{$form-field}--has-inline-label &
+                flex: 1
         &-element
             width: 100%
             padding: 0.8em
@@ -70,14 +61,12 @@ $fields-horizontal-gutter: 0.8em
             #{$form-field}--has-resizing-placeholder &
                 border: none
                 padding: 0
-                padding-top: calc(#{$input-and-label-default-font-size} * #{$placeholder-label-scale-ratio} + #{$space-between-scaled-placeholder-and-input} + #{$placeholder-focus-padding-top})
+                padding-top: calc(#{$input-and-label-default-font-size} * #{$placeholder-label-scale-ratio} + #{$space-between-scaled-placeholder-and-input} + #{$space-between-scaled-placeholder-and-top-of-field})
                 padding-bottom: $space-between-scaled-placeholder-and-input
-            #{$form-field}--has-inline-label &
-                flex: 1
-            &--has-padding-left
-                padding-left: $icon-width
-            &--has-padding-right
-                padding-right: $icon-width
+            #{$form-field}--has-icon-right &
+                padding-right: calc(#{$icon-width} + 5px)
+            #{$form-field}--has-icon-left &
+                padding-left: calc(#{$icon-width} + 5px)
             &--has-no-border-radius-left
                 border-top-left-radius: 0
                 border-bottom-left-radius: 0
@@ -85,18 +74,28 @@ $fields-horizontal-gutter: 0.8em
                 border-top-right-radius: 0
                 border-bottom-right-radius: 0
             &-icon
+                @extend .absolute-centered-element
+                @extend .absolute-centered-element--is-centered-vertically
+                display: flex
+                align-items: center
+                justify-content: center
+                height: 100%
                 width: $icon-width
+                background-color: lightblue
+                color: white
                 text-align: center
-                &--position-left
+                #{$form-field}--has-icon-left &
                     left: 0
-                &--position-right
+                    border-top-left-radius: $field-border-radius
+                    border-bottom-left-radius: $field-border-radius
+                #{$form-field}--has-icon-right &
                     right: 0
+                    border-top-right-radius: $field-border-radius
+                    border-bottom-right-radius: $field-border-radius
                 &--radio
                 &--checkbox
     &__btn
-        margin-top: 1em
         padding: 1em
     &__well
-        margin-top: 1em
         padding: 1em
         background-color: lightblue

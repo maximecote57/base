@@ -39,6 +39,9 @@
     width: 100%;
     vertical-align: top;
     padding: $reflex-grid-spacing;
+    @media screen and (max-width: map_get($breakpoints-max, xs)) {
+        padding: $reflex-cell-spacing-md;
+    }
 }
 
 // defaults for auto cols

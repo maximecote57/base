@@ -28,12 +28,12 @@ gulp.task('sass', function () {
 gulp.task('serve', ['sass'], function() {
 
     browserSync.init({
-        proxy: 'http://localhost:8888',
+        proxy: 'http://localhost',
         open: false,
         notify: false
     });
 
-    gulp.watch('./sass-itcss/**/*.sass', ['sass']);
+    gulp.watch(['./sass-itcss/**/*.sass', './sass-itcss/**/*.scss'], ['sass']);
 });
 
 gulp.task('default', ['serve']);

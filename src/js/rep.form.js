@@ -1,12 +1,14 @@
 ;$(function () {
     $('.js-form-input').focus(function () {
-        $(this)
-            .siblings('.js-form-label')
+        var $field = $(this).closest('.js-form-field');
+        $field
+            .find('.js-form-label')
             .addClass('is-focus');
     });
     $('.js-form-label').click(function () {
-        $(this)
-            .siblings('.js-form-input')
+        var $field = $(this).closest('.js-form-field');
+        $field
+            .find('.js-form-input')
             .trigger('focus');
     })
 
