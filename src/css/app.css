@@ -89,6 +89,9 @@ input {
   position: relative;
   margin: 0 auto;
   max-width: 100%; }
+  @media (max-width: 767px) {
+    .container {
+      padding: 0 20px; } }
   @media (min-width: 480px) {
     .container {
       width: 480px; } }
@@ -101,19 +104,6 @@ input {
   @media (min-width: 1200px) {
     .container {
       width: 1140px; } }
-
-.custom-checkbox {
-  display: none; }
-  .custom-checkbox + label:before {
-    content: "\f096";
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    width: 1em;
-    margin-right: 0.2em;
-    font-family: FontAwesome; }
-  .custom-checkbox:checked + label:before {
-    content: "\f046"; }
 
 /*! Reflex v1.5.0 - https://github.com/leejordan/reflex */
 /*
@@ -154,10 +144,10 @@ input {
   position: relative;
   width: 100%;
   vertical-align: top;
-  padding: 1em 1em; }
+  padding: 0em 0em; }
   @media screen and (max-width: 479px) {
     [class*="grid__col-"] {
-      padding: 1em; } }
+      padding: 0em; } }
 
 .grid__cell {
   position: relative;
@@ -954,10 +944,10 @@ input {
   padding: 0; }
 
 .grid__col--bleed-x {
-  padding: 1em 0; }
+  padding: 0em 0; }
 
 .grid__col--bleed-y {
-  padding: 0 1em; }
+  padding: 0 0em; }
 
 .grid__col--bg {
   background-repeat: no-repeat;
@@ -966,13 +956,13 @@ input {
   padding-bottom: 50%; }
 
 .grid__cell--padding-sm {
-  padding: 0.5em; }
+  padding: 0em; }
 
 .grid__cell--padding-md {
-  padding: 1em; }
+  padding: 0em; }
 
 .grid__cell--padding-lg {
-  padding: 2em; }
+  padding: 0em; }
 
 .grid__cell-img {
   display: block;
@@ -1169,12 +1159,15 @@ input {
         flex-wrap: wrap;
     -webkit-box-align: center;
         -ms-flex-align: center;
-            align-items: center; }
+            align-items: center;
+    margin-bottom: 2em; }
     .form__field--has-resizing-placeholder {
+      width: 80%;
       padding: 0 1em;
       border: solid 1px lightgray;
       border-radius: 5px; }
     .form__field-label {
+      font-size: 1em;
       margin-bottom: 0.5em; }
       .form__field--has-resizing-placeholder .form__field-label {
         margin-bottom: 0;
@@ -1196,6 +1189,29 @@ input {
       .form__field--has-inline-label .form__field-label {
         margin-bottom: 0;
         padding-right: 1em; }
+      .form__field--has-no-label .form__field-label {
+        display: none; }
+      .form__field--has-checkbox .form__field-label, .form__field--has-radio-btn .form__field-label {
+        -webkit-box-ordinal-group: 3;
+            -ms-flex-order: 2;
+                order: 2;
+        margin-bottom: 0; }
+        .form__field--has-checkbox .form__field-label:before, .form__field--has-radio-btn .form__field-label:before {
+          position: relative;
+          top: 1px;
+          display: inline-block;
+          width: 1em;
+          margin-right: 0.2em;
+          font-size: 1.2em;
+          font-family: FontAwesome; }
+      .form__field--has-checkbox .form__field-label:before {
+        content: "\f096"; }
+      .form__field--has-checkbox.is-checked .form__field-label:before {
+        content: "\f046"; }
+      .form__field--has-radio-btn .form__field-label:before {
+        content: "\f10c"; }
+      .form__field--has-radio-btn.is-checked .form__field-label:before {
+        content: "\f05d"; }
     .form__field-element-container {
       position: relative;
       width: 100%; }
@@ -1203,8 +1219,13 @@ input {
         -webkit-box-flex: 1;
             -ms-flex: 1;
                 flex: 1; }
+      .form__field--has-checkbox .form__field-element-container, .form__field--has-radio-btn .form__field-element-container {
+        -webkit-box-ordinal-group: 2;
+            -ms-flex-order: 1;
+                order: 1;
+        width: auto; }
     .form__field-element {
-      width: 100%;
+      width: 80%;
       padding: 0.8em;
       font-size: 1em;
       border: solid 1px lightgray;
@@ -1218,12 +1239,8 @@ input {
         padding-right: calc(3em + 5px); }
       .form__field--has-icon-left .form__field-element {
         padding-left: calc(3em + 5px); }
-      .form__field-element--has-no-border-radius-left {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0; }
-      .form__field-element--has-no-border-radius-right {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0; }
+      .form__field--has-checkbox .form__field-element, .form__field--has-radio-btn .form__field-element {
+        display: none; }
       .form__field-element-icon {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -1478,6 +1495,15 @@ input {
 
 .hidden-xl-down {
   display: none; }
+
+.text-center {
+  text-align: center !important; }
+
+.text-left {
+  text-align: left !important; }
+
+.text-right {
+  text-align: right !important; }
 
 .text-justify {
   text-align: justify !important; }
