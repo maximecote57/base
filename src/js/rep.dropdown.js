@@ -11,7 +11,7 @@
  */
 
 
-$(function () {
+;$(function () {
 
     var $dropdowns = $('.js-dropdown');
     var classToToggle = 'is-opened';
