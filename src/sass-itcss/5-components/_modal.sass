@@ -1,8 +1,28 @@
 // A modal is a dialog box/popup window that is displayed on top of the current page
+// You need to add a dimmer in the HTML if you want a dimmer when the modal is shown
+///
 
+    <div class="modal" data-dimmer="true" id="modal">
+        <div class="modal__close-btn js-close-modal-btn">
+			<i class="fa fa-close"></i>
+		</div>
+		<div class="modal__header">Modal header</div>
+		<div class="modal__content">
+			<h3>Modal content</h3>
+			<p>Donec ullamcorper nulla non metus auctor fringilla. Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper.
+				Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod.
+				Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean lacinia bibendum nulla sed consectetur. Curabitur blandit tempus porttitor.
+			</p>
+		</div>
+		<div class="modal__footer">Modal footer</div>
+	</div>
+	<div class="dimmer js-dimmer"></div>
+	<button class="btn js-show-modal-btn" data-modal-id="modal">Open Modal</button>
+
+///
 .modal
     position: fixed
-    top: 10em
+    top: 5em
     left: 50%
     width: 35em
     background-color: white

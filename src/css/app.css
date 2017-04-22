@@ -1275,7 +1275,7 @@ input {
 
 .modal {
   position: fixed;
-  top: 10em;
+  top: 5em;
   left: 50%;
   width: 35em;
   background-color: white;

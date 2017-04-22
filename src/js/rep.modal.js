@@ -2,9 +2,11 @@
 
     function openModal($modal) {
 
+        var hasDimmer = typeof($modal.data('dimmer') !== "undefined") ? $modal.data('dimmer') : false;
+
         $modal.addClass('is-visible');
 
-        if ($modal.hasClass('has-dimmer')) {
+        if (hasDimmer) {
             var $dimmer = $('.js-dimmer');
             $dimmer
                 .addClass('is-visible')
@@ -25,9 +27,11 @@
 
     function closeModal($modal) {
 
+        var hasDimmer = typeof($modal.data('dimmer') !== "undefined") ? $modal.data('dimmer') : false;
+
         $modal.removeClass('is-visible');
 
-        if ($modal.hasClass('has-dimmer')) {
+        if (hasDimmer) {
             var $dimmer = $('.js-dimmer');
             $dimmer
                 .removeClass('is-visible');
@@ -42,7 +46,7 @@
 
         $('.js-show-modal-btn').click(function () {
 
-            var $modal = $($(this).data('modal-id'));
+            var $modal = $("#" + $(this).data('modal-id'));
 
             openModal($modal)
 

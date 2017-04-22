@@ -38,16 +38,20 @@
         $sidebar.hasClass('is-visible') ? closeSidebar() : openSidebar();
     }
 
-    $('.js-sidebar-toggle').click(function () {
-        toggleSidebar();
-    });
+    function bindListeners() {
+        $('.js-sidebar-toggle').click(function () {
+            toggleSidebar();
+        });
 
-    $('.js-sidebar-open').click(function () {
-        openSidebar();
-    });
+        $('.js-sidebar-open').click(function () {
+            openSidebar();
+        });
 
-    $('.js-sidebar-close').click(function () {
-        closeSidebar();
-    });
+        $('.js-sidebar-close').click(function () {
+            closeSidebar();
+        });
+    }
+
+    bindListeners();
 
 })

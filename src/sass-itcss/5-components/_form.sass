@@ -1,11 +1,33 @@
 // A form displays a set of related user input fields in a structured way
 // A section header is a title you can put between fieldsets
 // A field is a label and an element
-// A label is the text next to an element
-// And element may be an input, a textarea, a dropdown, etc...
+// A label is the text over or next to an element
+// An element may be an input, a textarea, a dropdown, etc...
 // A button is a button, in this case it will be a submit button most of the time. Use a 'button' class and the good modifiers in conjunction
 // A well is a block of text with border and padding, most of the time at the bottom of the form
-
+///
+    <form class="form">
+        <div class="grid">
+            <div class="grid__col-xs-12 grid__col-sm-6">
+                <div class="form__field js-form-field">
+                    <label class="form__field-label js-form-label">Field 1</label>
+                    <div class="form__field-element-container">
+                        <input class="form__field-element js-form-input"/>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__col-xs-12 grid__col-sm-6">
+                <div class="form__field js-form-field">
+                    <label class="form__field-label js-form-label">Field 2</label>
+                    <div class="form__field-element-container">
+                        <input class="form__field-element js-form-input"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="form__btn">Submit</button>
+    </form>
+///
 $icon-width: 3em
 $input-and-label-default-font-size: 1em
 $placeholder-label-scale-ratio: 0.7
