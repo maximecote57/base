@@ -1,35 +1,50 @@
 ;$(function () {
 
-    $('.js-form-input').focus(function () {
-        var $field = $(this).closest('.js-form-field');
-        $field
-            .find('.js-form-label')
-            .addClass('is-focus');
-    });
+    function bindListeners() {
 
-    $('.js-form-label').click(function () {
-        var $field = $(this).closest('.js-form-field');
-        $field
-            .find('.js-form-input')
-            .trigger('focus');
-    });
+        $('.js-form-input').focus(function () {
 
-    $('.js-form-input[type="checkbox"]').change(function () {
-        var $field = $(this).closest('.js-form-field');
-        $field.toggleClass('is-checked');
-    });
+            var $field = $(this).closest('.js-form-field');
 
-    $('.js-form-input[type="radio"]').change(function () {
-        var $form = $(this).closest('form');
-        var radioBtnGroupName = $(this).attr('name');
-        var $radioBtnsOfSameGroup = $form.find('.js-form-input[type="radio"][name=' + radioBtnGroupName + ']');
+            $field
+                .find('.js-form-label')
+                .addClass('is-focus');
 
-        $radioBtnsOfSameGroup.each(function () {
-            $(this)
-                .closest('.js-form-field')
-                .toggleClass('is-checked', $(this).prop('checked'));
-        })
+        });
 
-    });
+        $('.js-form-label').click(function () {
+
+            var $field = $(this).closest('.js-form-field');
+
+            $field
+                .find('.js-form-input')
+                .trigger('focus');
+
+        });
+
+        $('.js-form-input[type="checkbox"]').change(function () {
+
+            var $field = $(this).closest('.js-form-field');
+
+            $field.toggleClass('is-checked');
+
+        });
+
+        $('.js-form-input[type="radio"]').change(function () {
+
+            var $form = $(this).closest('form');
+            var radioBtnGroupName = $(this).attr('name');
+            var $radioBtnsOfSameGroup = $form.find('.js-form-input[type="radio"][name=' + radioBtnGroupName + ']');
+
+            $radioBtnsOfSameGroup.each(function () {
+                $(this)
+                    .closest('.js-form-field')
+                    .toggleClass('is-checked', $(this).prop('checked'));
+            })
+
+        });
+    }
+
+    bindListeners();
 
 });
