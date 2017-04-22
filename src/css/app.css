@@ -41,6 +41,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+a {
+  cursor: pointer; }
+
 * {
   box-sizing: border-box; }
 
@@ -1123,6 +1126,7 @@ input {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    min-width: 10em;
     border: solid 1px #dedede;
     padding: 0.75em;
     background-color: #dedede;
@@ -1136,8 +1140,14 @@ input {
     border-top: none; }
     .dropdown__list--pos-static {
       position: static; }
-  .dropdown__list-item + .dropdown__list-item {
-    border-top: solid 1px #dedede; }
+  .dropdown__list-item {
+    background-color: white; }
+    .dropdown__list-item + .dropdown__list-item {
+      border-top: solid 1px #dedede; }
+    .dropdown__list-item > * {
+      display: block;
+      padding: 1em;
+      cursor: pointer; }
   .dropdown__list-item-link {
     display: block;
     padding: 0.75em;

@@ -1,29 +1,5 @@
 /*
 
- Dropdown.js
- by Maxime Côté
-
- HTML structure MUST be :
-
- <div class="dropdown js-dropdown">
- <a class="dropdown__btn js-dropdown-btn" href="javascript:void(0)">Dropdown name<i class="dropdown__caret fa fa-caret-down" aria-hidden="true"></i></a>
-     <ul class="dropdown__list js-dropdown-list">
-         <li class="dropdown__list-item">
-            <a href="#">Option name</a>
-         </li>
-         <li class="dropdown__list-item">
-            <a href="#">Option name</a>
-         </li>
-     </ul>
- </div>
-
- Must include _dropdown.sass.
-
- If you want the dropdown__list to push the content below instead of being over it:
- - Add the 'dropdown__list--pos-static' class ot it.
-
- If you want the dropdown__btn to be underlined:
- - Add the 'dropdown__btn--underlined' to it.
 
  If you want to change the slide animation duration:
  - Add a parameter to the slideUp and slideDown function calls (in ms).

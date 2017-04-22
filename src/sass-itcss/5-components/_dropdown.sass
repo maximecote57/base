@@ -1,5 +1,22 @@
 // A dropdown menu is a toggleable menu that allows the user to choose one value from a predefined list
+//
+// If you want the dropdown__list to push the content below instead of being over it, add the 'dropdown__list--pos-static' class ot it.
+//
+///
 
+    <div class="dropdown js-dropdown">
+     <a class="dropdown__btn js-dropdown-btn" href="javascript:void(0)">Dropdown name<i class="dropdown__caret fa fa-caret-down" aria-hidden="true"></i></a>
+         <ul class="dropdown__list js-dropdown-list">
+             <li class="dropdown__list-item">
+                <a href="#">Option name</a>
+             </li>
+             <li class="dropdown__list-item">
+                <a href="#">Option name</a>
+             </li>
+         </ul>
+     </div>
+
+///
 .dropdown
     $block: &
     position: relative
@@ -11,6 +28,7 @@
         display: inline-flex
         align-items: center
         justify-content: space-between
+        min-width: 10em
         border: solid 1px #dedede
         padding: 0.75em
         background-color: #dedede
@@ -25,8 +43,13 @@
         &--pos-static
             position: static
     &__list-item
+        background-color: white
         & + #{&}
             border-top: solid 1px #dedede
+        & > *
+            display: block
+            padding: 1em
+            cursor: pointer
     &__list-item-link
         display: block
         padding: 0.75em
