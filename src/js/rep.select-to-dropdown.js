@@ -17,31 +17,42 @@
 
         var $select = $(this);
         var dropdownBtnText = $select.find('option:selected').length > 0 ? $select.find('option:selected').text() : $select.find('option').first().text();
-        var $dropdown = $('<div class="dropdown js-dropdown">');
+        var $dropdown = null;
         var customClasses = $(this).attr('data-custom-classes');
 
-        if(customClasses !== '') {
-            $dropdown.addClass(customClasses);
+        function createDropdownDOMElement() {
+
+            $dropdown = $('<div class="dropdown js-dropdown">');
+
+            if(customClasses !== '') {
+                $dropdown.addClass(customClasses);
+            }
+
+            $dropdown
+                .append('<a class="dropdown__btn js-dropdown-btn" href="javascript:void(0)">' + dropdownBtnText + '</a>')
+                .append('<ul class="dropdown__list js-dropdown-list">');
+
+            $dropdownList = $dropdown.find('ul');
+
+            $select
+                .find('option')
+                .each(function() {
+                    $dropdownList.append('<li class="dropdown__list-item"><span data-value="' + $(this).attr('value') + '">' + $(this).text() + '</span></li>')
+                });
         }
 
-        $dropdown
-            .append('<a class="dropdown__btn js-dropdown-btn" href="javascript:void(0)">' + dropdownBtnText + '</a>')
-            .append('<ul class="dropdown__list js-dropdown-list">');
+        function bindListeners() {
+            $dropdown.on('change', function () {
+                $select.val($dropdown.find('.is-selected').data('value'));
+            })
+        }
 
-        $dropdownList = $dropdown.find('ul');
-
-        $select
-            .find('option')
-            .each(function() {
-                $dropdownList.append('<li class="dropdown__list-item"><span data-value="' + $(this).attr('value') + '">' + $(this).text() + '</span></li>')
-            });
+        createDropdownDOMElement();
+        bindListeners();
 
         $dropdown.insertAfter($select);
         $select.hide();
 
-        $dropdown.on('change', function () {
-            $select.val($dropdown.find('.is-selected').data('value'));
-        })
     });
 })
 
