@@ -1114,8 +1114,6 @@ input {
   position: relative;
   display: inline-block;
   font-size: 1rem; }
-  .dropdown__caret {
-    margin-left: 0.5em; }
   .dropdown__btn {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
@@ -1132,13 +1130,16 @@ input {
     background-color: #dedede;
     text-decoration: none;
     color: black; }
+    .dropdown__btn:after {
+      content: '\f0d7';
+      font-family: FontAwesome; }
   .dropdown__list {
     position: absolute;
     display: none;
     width: 100%;
     border: solid 1px #dedede;
     border-top: none; }
-    .dropdown__list--pos-static {
+    .dropdown--has-pos-static-list .dropdown__list {
       position: static; }
   .dropdown__list-item {
     background-color: white; }

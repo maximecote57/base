@@ -69,9 +69,10 @@
 
             var $dropdown = $(this).closest('.js-dropdown');
             var $dropdownLink = $dropdown.find('.js-dropdown-btn');
+            var $dropdownSpans = $dropdown.find('.js-dropdown-list li span');
             var $clickedDropdownListItemSpan =  $(this);
 
-            $('.js-dropdown-list li span', $dropdown).removeClass('is-selected');
+            $dropdownSpans.removeClass('is-selected');
             $clickedDropdownListItemSpan.addClass('is-selected');
 
             $dropdownLink.text($clickedDropdownListItemSpan.text());

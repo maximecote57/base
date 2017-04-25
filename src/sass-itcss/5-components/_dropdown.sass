@@ -1,6 +1,6 @@
 // A dropdown menu is a toggleable menu that allows the user to choose one value from a predefined list
 //
-// If you want the dropdown__list to push the content below instead of being over it, add the 'dropdown__list--pos-static' class ot it.
+// If you want the dropdown__list to push the content below instead of being over it, add the 'dropdown__list--pos-static' class to the .dropdown.
 //
 ///
 
@@ -22,8 +22,6 @@
     position: relative
     display: inline-block
     font-size: 1rem
-    &__caret
-        margin-left: 0.5em
     &__btn
         display: inline-flex
         align-items: center
@@ -34,13 +32,16 @@
         background-color: #dedede
         text-decoration: none
         color: black
+        &:after
+            content: '\f0d7'
+            font-family: FontAwesome
     &__list
         position: absolute
         display: none
         width: 100%
         border: solid 1px #dedede
         border-top: none
-        &--pos-static
+        #{$block}--has-pos-static-list &
             position: static
     &__list-item
         background-color: white
