@@ -35,7 +35,12 @@
     &--is-right-of-screen
         right: 0
         transform: translateX(100%)
-    &__list
+    @media screen and (max-width: map_get($breakpoints-max, md))
+        width: 30%
+    @media screen and (max-width: map_get($breakpoints-max, sm))
+        width: 40%
+    @media screen and (max-width: map_get($breakpoints-max, xs))
+        width: 70%
     &__list-item
         border: solid 1px #dedede
         text-align: center
@@ -49,6 +54,3 @@
             transition: background-color map_get($transitions-times, normal)
             &:hover
                 background-color: white
-    &__list-item-icon
-        &--position-left
-        &--position-right
