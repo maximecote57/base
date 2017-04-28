@@ -5,7 +5,6 @@ var sass = require('gulp-sass');
 var cssmin = require('gulp-cssmin');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
-var uglify = require('gulp-uglify');
 var globbing = require('gulp-css-globbing');
 var filter = require('gulp-filter');
 
