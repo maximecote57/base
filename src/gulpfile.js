@@ -23,7 +23,7 @@ gulp.task('sass', function () {
         .pipe(reload({stream: true}));
 });
 
-// Static Server + watching scss/html files
+// Static Server + watching scss files
 gulp.task('serve', ['sass'], function() {
 
     browserSync.init({
@@ -32,7 +32,8 @@ gulp.task('serve', ['sass'], function() {
         notify: false
     });
 
-    gulp.watch(['./sass-itcss/**/*.sass', './sass-itcss/**/*.scss'], ['sass']);
+    gulp.watch(['./sass-itcss/**/*.scss'], ['sass']);
+
 });
 
 gulp.task('default', ['serve']);
