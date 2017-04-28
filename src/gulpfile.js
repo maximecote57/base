@@ -7,11 +7,17 @@ var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var globbing = require('gulp-css-globbing');
 var filter = require('gulp-filter');
+var htmlreplace = require('gulp-html-replace');
 
 gulp.task('sass', function () {
-    gulp.src('./sass-itcss/app.sass')
+
+    var timestamp = new Date();
+
+    timestamp = timestamp.getTime();
+
+    gulp.src('./sass-itcss/app.scss')
         .pipe(globbing({
-            extensions: ['.scss', '.sass']
+            extensions: ['.scss']
         }))
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
@@ -21,6 +27,15 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./css'))
         .pipe(filter(['**/*.css']))
         .pipe(reload({stream: true}));
+
+    gulp.src('index.html')
+        .pipe(htmlreplace({
+            'css': 'css/app.css?v=' + timestamp
+        }, {
+            keepBlockTags: true
+        }))
+        .pipe(gulp.dest('.'));
+
 });
 
 // Static Server + watching scss files
