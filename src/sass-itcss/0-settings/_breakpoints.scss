@@ -4,15 +4,13 @@
 
 $breakpoints-min: (
     xs: 0,
-    sm: 480px,
-    md: 768px,
-    lg: 992px,
-    xl: 1200px
+    sm: 768px,
+    md: 991px,
+    lg: 1199px
 );
 
 $breakpoints-max: (
-    xs: 479px,
-    sm: 767px,
-    md: 991px,
-    lg: 1199px
+    xs: map_get($breakpoints-min, sm) - 1,
+    sm: map_get($breakpoints-min, md) - 1,
+    md: map_get($breakpoints-min, lg) - 1
 );
