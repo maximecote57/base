@@ -1,4 +1,5 @@
 // box-sizing: border-box specifies that all elements should have padding and border included in the element's total width and height
 // Please avoid using as much properties as possible here as it may slow down the rendering in the browser
-*
-    box-sizing: border-box
+* {
+    box-sizing: border-box;
+}

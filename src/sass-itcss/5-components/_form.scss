@@ -1,0 +1,182 @@
+// A form displays a set of related user input fields in a structured way
+// A section header is a title you can put between fieldsets
+// A field is a label and an element
+// A label is the text over or next to an element
+// An element may be an input, a textarea, a dropdown, etc...
+// A button is a button, in this case it will be a submit button most of the time. Use a 'button' class and the good modifiers in conjunction
+// A well is a block of text with border and padding, most of the time at the bottom of the form
+/*
+    <form class="form">
+        <div class="grid">
+            <div class="grid__col-xs-12 grid__col-sm-6">
+                <div class="form__field js-form-field">
+                    <label class="form__field-label js-form-label">Field 1</label>
+                    <div class="form__field-element-container">
+                        <input class="form__field-element js-form-input"/>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__col-xs-12 grid__col-sm-6">
+                <div class="form__field js-form-field">
+                    <label class="form__field-label js-form-label">Field 2</label>
+                    <div class="form__field-element-container">
+                        <input class="form__field-element js-form-input"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="form__btn">Submit</button>
+    </form>
+*/
+
+$icon-width: 3em;
+$input-and-label-default-font-size: 1em;
+$placeholder-label-scale-ratio: 0.7;
+$field-border-radius: 5px;
+$space-between-scaled-placeholder-and-top-of-field: 5px;
+$space-between-scaled-placeholder-and-input: 5px;
+
+.form {
+    font-size: 1rem;
+    &__section-header {
+        width: 100%;
+        padding: 1em 0;
+    }
+    &__field {
+        $form-field: &;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 2em;
+        &.has-error {
+        }
+        &--has-resizing-placeholder {
+            width: 80%;
+            padding: 0 1em;
+            border: solid 1px map_get($colors, gray-light);
+            border-radius: $field-border-radius;
+        }
+        &-label {
+            font-size: $input-and-label-default-font-size;
+            margin-bottom: 0.5em;
+            #{$form-field}--has-resizing-placeholder & {
+                @extend .absolute-centered-element;
+                @extend .absolute-centered-element--is-centered-vertically;
+                margin-bottom: 0;
+                cursor: text;
+                font-size: $input-and-label-default-font-size;
+                z-index: map_get($z-indexes, medium);
+                transform: translateY(-50%) scale(1) perspective(0);
+                transform-origin: 0;
+                transition: top map_get($transitions-times, normal), transform map_get($transitions-times, normal);
+                &.is-focus {
+                    top: $space-between-scaled-placeholder-and-top-of-field;
+                    transform: translateY(0) scale($placeholder-label-scale-ratio) perspective(1px);
+                }
+                #{$form-field}--has-inline-label & {
+                    margin-bottom: 0;
+                    padding-right: 1em;
+                }
+                #{$form-field}--has-no-label & {
+                    display: none;
+                }
+                #{$form-field}--has-checkbox &, #{$form-field}--has-radio-btn & {
+                    order: 2;
+                    margin-bottom: 0;
+                    &:before {
+                        position: relative;
+                        top: 1px;
+                        display: inline-block;
+                        width: 1em;
+                        margin-right: 0.2em;
+                        font-size: 1.2em;
+                        font-family: FontAwesome, sans-serif;
+                    }
+                }
+                #{$form-field}--has-checkbox & {
+                    &:before {
+                        content: "\f096";
+                    }
+                }
+                #{$form-field}--has-checkbox.is-checked & {
+                    &:before {
+                        content: "\f046";
+                    }
+                }
+                #{$form-field}--has-radio-btn & {
+                    &:before {
+                        content: "\f10c";
+                    }
+                }
+                #{$form-field}--has-radio-btn.is-checked & {
+                    &:before {
+                        content: "\f05d";
+                    }
+                }
+            }
+        }
+        &-element-container {
+            position: relative;
+            width: 100%;
+            #{$form-field}--has-inline-label & {
+                flex: 1;
+            }
+            #{$form-field}--has-checkbox &, #{$form-field}--has-radio-btn & {
+                order: 1;
+                width: auto;
+            }
+        }
+        &-element {
+            width: 80%;
+            padding: 0.8em;
+            font-size: $input-and-label-default-font-size;
+            border: solid 1px map_get($colors, gray-light);
+            border-radius: $field-border-radius;
+            #{$form-field}--has-resizing-placeholder & {
+                border: none;
+                padding: 0;
+                padding-top: calc(#{$input-and-label-default-font-size} * #{$placeholder-label-scale-ratio} + #{$space-between-scaled-placeholder-and-input} + #{$space-between-scaled-placeholder-and-top-of-field});
+                padding-bottom: $space-between-scaled-placeholder-and-input;
+            }
+            #{$form-field}--has-icon-right & {
+                padding-right: calc(#{$icon-width} + 5px);
+            }
+            #{$form-field}--has-icon-left & {
+                padding-left: calc(#{$icon-width} + 5px);
+            }
+            #{$form-field}--has-checkbox &, #{$form-field}--has-radio-btn & {
+                display: none;
+            }
+            &-icon {
+                @extend .absolute-centered-element;
+                @extend .absolute-centered-element--is-centered-vertically;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                width: $icon-width;
+                background-color: lightblue;
+                color: white;
+                text-align: center;
+                #{$form-field}--has-icon-left & {
+                    left: 0;
+                    border-top-left-radius: $field-border-radius;
+                    border-bottom-left-radius: $field-border-radius;
+                }
+                #{$form-field}--has-icon-right & {
+                    right: 0;
+                    border-top-right-radius: $field-border-radius;
+                    border-bottom-right-radius: $field-border-radius;
+                }
+            }
+        }
+    }
+    &__btn {
+        padding: 1em;
+    }
+    &__well {
+        padding: 1em;
+        background-color: lightblue;
+    }
+}

@@ -8,6 +8,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var uglify = require('gulp-uglify');
 var globbing = require('gulp-css-globbing');
 var filter = require('gulp-filter');
+var converter = require('sass-convert');
 
 gulp.task('sass', function () {
     gulp.src('./sass-itcss/app.sass')
@@ -22,6 +23,15 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./css'))
         .pipe(filter(['**/*.css']))
         .pipe(reload({stream: true}));
+});
+
+gulp.task('sass-convert', function () {
+    return gulp.src('./sass-itcss/**/*.sass)')
+        .pipe(converter({
+            from: 'sass',
+            to: 'scss'
+        }))
+        .pipe(gulp.dest('.'));
 });
 
 // Static Server + watching scss/html files

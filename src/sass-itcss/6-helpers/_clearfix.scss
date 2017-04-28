@@ -1,7 +1,9 @@
 // Clearfix forces content after the floats or the container containing the floats to render below it.
 
-.clearfix
-    &:after
-        display: table
-        content: ""
-        clear: both
+.clearfix {
+    &:after {
+        display: table;
+        content: "";
+        clear: both;
+    }
+}

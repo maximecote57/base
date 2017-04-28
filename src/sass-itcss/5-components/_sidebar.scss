@@ -1,0 +1,67 @@
+// A sidebar hides additional content beside a page.
+
+/*
+
+    <div class="sidebar sidebar--is-right-of-screen js-sidebar" data-dimmer="true" data-slide-content="false">
+		<ul class="sidebar__list">
+			<li class="sidebar__list-item">
+				<a class="sidebar__list-item-link" href="#">Link 1</a>
+			</li>
+			<li class="sidebar__list-item">
+				<a class="sidebar__list-item-link" href="#">Link 2</a>
+			</li>
+			<li class="sidebar__list-item">
+				<a class="sidebar__list-item-link" href="#">Link 3</a>
+			</li>
+		</ul>
+	</div>
+	<button class="btn js-sidebar-toggle">Open Sidebar</button>
+
+*/
+.sidebar {
+    position: fixed;
+    top: 0;
+    width: 20%;
+    height: 100%;
+    background-color: lightblue;
+    font-size: 1rem;
+    z-index: map_get($z-indexes, higher);
+    transition: transform map_get($transitions-times, normal);
+    &.is-visible {
+        transform: translateX(0);
+    }
+    &--is-left-of-screen {
+        left: 0;
+        transform: translateX(-100%);
+    }
+    &--is-right-of-screen {
+        right: 0;
+        transform: translateX(100%);
+    }
+    @media screen and (max-width: map_get($breakpoints-max, md)) {
+        width: 30%;
+    }
+    @media screen and (max-width: map_get($breakpoints-max, sm)) {
+        width: 40%;
+    }
+    @media screen and (max-width: map_get($breakpoints-max, xs)) {
+        width: 70%;
+    }
+    &__list-item {
+        border: solid 1px #dedede;
+        text-align: center;
+        & + #{&} {
+            border-top: none;
+        }
+        &-link {
+            display: block;
+            padding: 20px;
+            text-decoration: none;
+            color: black;
+            transition: background-color map_get($transitions-times, normal);
+            &:hover {
+                background-color: white;
+            }
+        }
+    }
+}

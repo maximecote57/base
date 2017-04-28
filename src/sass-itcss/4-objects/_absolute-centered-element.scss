@@ -1,0 +1,11 @@
+.absolute-centered-element {
+    position: absolute;
+    &--is-centered-vertically {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    &--is-centered-horizontally {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

@@ -1,9 +1,0 @@
-.slidable-content
-    transform: translateX(0)
-    transition: transform map_get($transitions-times, normal)
-    &--is-sliding-to-left
-        &.is-slided
-            transform: translateX(-(map_get($others, sidebar-width)))
-    &--is-sliding-to-right
-        &.is-slided
-            transform: translateX(map_get($others, sidebar-width))

@@ -1446,6 +1446,15 @@ input {
     right: 0;
     -webkit-transform: translateX(100%);
             transform: translateX(100%); }
+  @media screen and (max-width: 991px) {
+    .sidebar {
+      width: 30%; } }
+  @media screen and (max-width: 767px) {
+    .sidebar {
+      width: 40%; } }
+  @media screen and (max-width: 479px) {
+    .sidebar {
+      width: 70%; } }
   .sidebar__list-item {
     border: solid 1px #dedede;
     text-align: center; }

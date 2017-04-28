@@ -1,4 +1,5 @@
 // By default, a textarea can be resized. However, it can break the layout and make things ugly, so we disable it
 
-.textarea
-    resize: none
+.textarea {
+    resize: none;
+}

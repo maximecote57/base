@@ -1,0 +1,27 @@
+// A btn-group is used to group button together (with no spacing between them)
+// It puts the correct border between the button and the correct border-radius
+
+.btn-group {
+    $block: &;
+    &--horizontal {
+        #{$block}__btn {
+            border-right: solid 1px white;
+            &--first {
+                border-radius: 5px 0 0 5px;
+            }
+            &--last {
+                border-radius: 0 5px 5px 0;
+            }
+        }
+    }
+    &--vertical {
+        #{$block}__btn {
+            &--first {
+                border-radius: 5px 5px 0 0;
+            }
+            &--last {
+                border-radius: 0 0 5px 5px;
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+// A container is an element designed to contain page elements to a reasonable maximum width based on the size of a user's screen.
+// This is useful to couple with other UI elements like grid or menu to restrict their width to a reasonable size for display.
+
+.container {
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+    @media (max-width: map_get($breakpoints-max, sm)) {
+        padding: 0 20px;
+    }
+    @media (min-width: map_get($breakpoints-min, sm)) {
+        width: 480px;
+    }
+    @media (min-width: map_get($breakpoints-min, md)) {
+        width: 720px;
+    }
+    @media (min-width: map_get($breakpoints-min, lg)) {
+        width: 960px;
+    }
+    @media (min-width: map_get($breakpoints-min, xl)) {
+        width: 1140px;
+    }
+}
