@@ -111,7 +111,7 @@
 }
 
 @mixin make-grid--order-helpers() {
-    @include loop-grid--order-helpers($reflex-columns);
+    @include setupAutoCols($reflex-columns);
 }
 
 @mixin loop-grid--order-helpers($index, $breakpoint: null) {

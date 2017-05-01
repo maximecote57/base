@@ -6,11 +6,11 @@
 // --------------------------------------------------
 // grid full bleed (no internal padding)
 // --------------------------------------------------
-.#{$reflex-prefix}grid--bleed {
-    [class*="#{$reflex-prefix}grid__col-"] {
-        padding: 0;
-    }
-}
+//.#{$reflex-prefix}grid--bleed {
+//    [class*="#{$reflex-prefix}grid__col-"] {
+//        padding: 0;
+//    }
+//}
 
 // --------------------------------------------------
 // flex-wrap
@@ -60,27 +60,27 @@
     @include align-items(flex-end);
 
     // fallback to legacy vertical-align
-    [class*="#{$reflex-prefix}grid__col-"] {
-        vertical-align: bottom;
-    }
+    //[class*="#{$reflex-prefix}grid__col-"] {
+    //    vertical-align: bottom;
+    //}
 }
 
 .#{$reflex-prefix}grid--align-center {
     @include align-items(center);
 
     // fallback to legacy vertical-align
-    [class*="#{$reflex-prefix}grid__col-"] {
-        vertical-align: middle;
-    }
+    //[class*="#{$reflex-prefix}grid__col-"] {
+    //    vertical-align: middle;
+    //}
 }
 
 .#{$reflex-prefix}grid--align-baseline {
     @include align-items(baseline);
 
     // fallback to legacy vertical-align
-    [class*="#{$reflex-prefix}grid__col-"] {
-        vertical-align: baseline;
-    }
+    //[class*="#{$reflex-prefix}grid__col-"] {
+    //    vertical-align: baseline;
+    //}
 }
 
 // --------------------------------------------------
@@ -95,9 +95,9 @@
     @include align-content(flex-end);
 
     // fallback to legacy vertical-align
-    [class*="#{$reflex-prefix}grid__col-"] {
-        vertical-align: bottom;
-    }
+    //[class*="#{$reflex-prefix}grid__col-"] {
+    //    vertical-align: bottom;
+    //}
 }
 
 .#{$reflex-prefix}grid--align-content-center {
@@ -188,61 +188,61 @@
 // --------------------------------------------------
 // grid__col modifiers
 // --------------------------------------------------
-
-.#{$reflex-prefix}grid__col--bleed {
-    padding: 0;
-}
-
-.#{$reflex-prefix}grid__col--bleed-x {
-    padding: $reflex-cell-spacing 0;
-}
-
-.#{$reflex-prefix}grid__col--bleed-y {
-    padding: 0 $reflex-cell-spacing;
-}
-
-.#{$reflex-prefix}grid__col--bg {
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    padding-bottom: 50%;
-}
+//
+//.#{$reflex-prefix}grid__col--bleed {
+//    padding: 0;
+//}
+//
+//.#{$reflex-prefix}grid__col--bleed-x {
+//    padding: $reflex-cell-spacing 0;
+//}
+//
+//.#{$reflex-prefix}grid__col--bleed-y {
+//    padding: 0 $reflex-cell-spacing;
+//}
+//
+//.#{$reflex-prefix}grid__col--bg {
+//    background-repeat: no-repeat;
+//    background-position: center center;
+//    background-size: cover;
+//    padding-bottom: 50%;
+//}
 
 // --------------------------------------------------
 // grid__cell modifiers
 // --------------------------------------------------
 
-.#{$reflex-prefix}grid__cell--padding-sm {
-    padding: $reflex-cell-spacing-sm;
-}
-
-.#{$reflex-prefix}grid__cell--padding-md {
-    padding: $reflex-cell-spacing-md;
-}
-
-.#{$reflex-prefix}grid__cell--padding-lg {
-    padding: $reflex-cell-spacing-lg;
-}
-
-.#{$reflex-prefix}grid__cell-img {
-    display: block;
-    @include display-flex-only();
-    @include flex(0, 0, auto);
-    margin-left: 0;
-    margin-right: 0;
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-}
-
-.#{$reflex-prefix}grid__cell-footer {
-    @include display-flex();
-    width: 100%;
-    margin-top: auto;
-}
+//.#{$reflex-prefix}grid__cell--padding-sm {
+//    padding: $reflex-cell-spacing-sm;
+//}
+//
+//.#{$reflex-prefix}grid__cell--padding-md {
+//    padding: $reflex-cell-spacing-md;
+//}
+//
+//.#{$reflex-prefix}grid__cell--padding-lg {
+//    padding: $reflex-cell-spacing-lg;
+//}
+//
+//.#{$reflex-prefix}grid__cell-img {
+//    display: block;
+//    @include display-flex-only();
+//    @include flex(0, 0, auto);
+//    margin-left: 0;
+//    margin-right: 0;
+//    max-width: 100%;
+//    width: 100%;
+//    height: auto;
+//}
+//
+//.#{$reflex-prefix}grid__cell-footer {
+//    @include display-flex();
+//    width: 100%;
+//    margin-top: auto;
+//}
 
 // --------------------------------------------------
 // Responsive visibility modifiers
 // --------------------------------------------------
 
-@include responsive-visibility-helpers();
+//@include responsive-visibility-helpers();
