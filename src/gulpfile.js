@@ -12,12 +12,9 @@ const filter = require('gulp-filter');
 const htmlreplace = require('gulp-html-replace');
 const uncss = require('gulp-uncss');
 const responsive = require('gulp-responsive');
-const hg = require('gulp-hg');
 const exec = require('child_process').exec;
-const clean = require('gulp-clean');
 const debug = require('gulp-debug');
 const runSequence = require('run-sequence');
-const replace = require('gulp-replace');
 
 var timestamp = new Date();
 
@@ -85,16 +82,6 @@ gulp.task('update-html-css-link-timestamp', function () {
             keepBlockTags: true
         }))
         .pipe(gulp.dest('.'));
-
-});
-
-// removes current compiled css file
-gulp.task('clean-css-files', function () {
-
-    return gulp.src('css/*')
-        .pipe(debug({title: 'START - DELETING CURRENT COMPILED CSS FILE', showFiles: false}))
-        .pipe(clean({read: false}))
-        .pipe(debug({title: 'END - DELETING CURRENT COMPILED CSS FILE', showFiles: false}));
 
 });
 
