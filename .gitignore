@@ -7,4 +7,3 @@ archive
 .jshintrc
 .travis.yml
 ./src/package.json
-src/css/app.css
