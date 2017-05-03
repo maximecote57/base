@@ -13,7 +13,14 @@ const htmlreplace = require('gulp-html-replace');
 const uncss = require('gulp-uncss');
 const responsive = require('gulp-responsive');
 const hg = require('gulp-hg');
-const shell = require('gulp-shell')
+const exec = require('child_process').exec;
+const clean = require('gulp-clean');
+const debug = require('gulp-debug');
+const runSequence = require('run-sequence');
+
+var timestamp = new Date();
+
+timestamp = timestamp.getTime();
 
 // compiles the scss files to css
 // reinjects the new css into the browser
@@ -35,37 +42,58 @@ gulp.task('sass-dev', function () {
 // removes css classes not used in html files (ignores 'is-*' classes which can be added via JS)
 // adds prefixes to support last 2 versions of every browsers
 // minifies the CSS
-// appends a new timestamp to the link's href of the app.css file in index.html
 gulp.task('sass-prod', function () {
 
-    var timestamp = new Date();
-
-    timestamp = timestamp.getTime();
-
-    gulp.src('./sass-itcss/app.scss')
+    return gulp.src('sass-itcss/app.scss')
         .pipe(globbing({
             extensions: ['.scss']
         }))
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(debug({title: 'START - SASS TO CSS CONVERSION', showFiles: false}))
+        .pipe(sass())
+        .pipe(debug({title: 'END - SASS TO CSS CONVERSION', showFiles: false}))
+        .pipe(debug({title: 'START - UNCSS APP.CSS', showFiles: false}))
         .pipe(uncss({
             html: ['index.html'],
             ignore: [/\.is-/]
         }))
+        .pipe(debug({title: 'END - UNCSS APP.CSS', showFiles: false}))
+        .pipe(debug({title: 'START - AUTOPREFIXING APP.CSS', showFiles: false}))
         .pipe(autoprefixer({
             browsers: 'last 2 versions'
         }))
+        .pipe(debug({title: 'END - AUTOPREFIXING APP.CSS', showFiles: false}))
+        .pipe(debug({title: 'START - MINIFICATION OF APP.CSS', showFiles: false}))
         .pipe(cssmin())
+        .pipe(debug({title: 'END - MINIFICATION OF APP.CSS', showFiles: false}))
         .pipe(sourcemaps.write('/'))
-        .pipe(gulp.dest('./css'));
+        .pipe(gulp.dest('./css'))
+        .on('end', function () {
+            console.log('FINISHED :) :) :) :) :) :)');
+        });
 
-    gulp.src('index.html')
+});
+
+// appends a new timestamp to the link's href of the app.css file in index.html
+gulp.task('update-html-css-link-timestamp', function () {
+
+    return gulp.src('index.html')
         .pipe(htmlreplace({
             'css': 'css/app.css?v=' + timestamp
         }, {
             keepBlockTags: true
         }))
         .pipe(gulp.dest('.'));
+
+});
+
+// removes current compiled css file
+gulp.task('clean-css-files', function () {
+
+    return gulp.src('css/*')
+        .pipe(debug({title: 'START - DELETING CURRENT COMPILED CSS FILE', showFiles: false}))
+        .pipe(clean({read: false}))
+        .pipe(debug({title: 'END - DELETING CURRENT COMPILED CSS FILE', showFiles: false}));
 
 });
 
@@ -126,15 +154,33 @@ gulp.task('serve', ['sass-dev'], function() {
 
 });
 
-// launches a static server + watching scss files
-gulp.task('deploy', ['sass-prod'], function() {
+gulp.task('git-add-css-files-to-staging', function (cb) {
 
-    gulp.src('css/*', {buffer: false})
-        .pipe(hg.commit('CSS DEPLOYMENT', function(error, stdout){
-            if(!error){
-               shell.task('echo Hello, World!');
-            }
-        }));
+    exec('git add css/*', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+    });
+});
+
+gulp.task('git-commit-css-file', function (cb) {
+    exec('git commit  -m "CSS DEPLOYMENT" css', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+    });
+});
+
+gulp.task('git-push', function (cb) {
+    exec('git push', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+    });
+});
+gulp.task('deploy', function() {
+
+    runSequence('sass-prod', 'update-html-css-link-timestamp', 'git-add-css-files-to-staging', 'git-commit-css-file', 'git-push');
 
 });
 
