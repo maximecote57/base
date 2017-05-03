@@ -42,7 +42,9 @@ table {
   border-spacing: 0; }
 
 a {
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 10rem;
+  color: blue; }
 
 * {
   box-sizing: border-box; }
