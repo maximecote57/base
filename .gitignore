@@ -1,5 +1,5 @@
 archive
-node_modules
+# node_modules
 .idea
 .editorconfig
 .gitattributes
@@ -8,3 +8,4 @@ node_modules
 .travis.yml
 ./src/package.json
 ./src/css/app.css
+src/index.html
