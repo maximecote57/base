@@ -157,7 +157,7 @@ gulp.task('serve', ['sass-dev'], function() {
 
 gulp.task('git-add-css-files-to-staging', function (cb) {
 
-    exec('git add css/*', function (err, stdout, stderr) {
+    exec('git add css/* index.html', function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
         cb(err);
@@ -165,7 +165,7 @@ gulp.task('git-add-css-files-to-staging', function (cb) {
 });
 
 gulp.task('git-commit-css-file', function (cb) {
-    exec('git commit  -m "CSS DEPLOYMENT" css', function (err, stdout, stderr) {
+    exec('git commit  -m "CSS DEPLOYMENT" css index.html', function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
         cb(err);
