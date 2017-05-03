@@ -17,6 +17,7 @@ const exec = require('child_process').exec;
 const clean = require('gulp-clean');
 const debug = require('gulp-debug');
 const runSequence = require('run-sequence');
+const replace = require('gulp-replace');
 
 var timestamp = new Date();
 
@@ -154,6 +155,18 @@ gulp.task('serve', ['sass-dev'], function() {
 
 });
 
+gulp.task('uncomment-css-file-in-git-ignore', function() {
+    gulp.src(['.gitignore'])
+        .pipe(replace('#css/app.css', 'css/app.css'))
+        .pipe(gulp.dest('.'));
+});
+
+gulp.task('comment-css-file-in-git-ignore', function() {
+    gulp.src(['.gitignore'])
+        .pipe(replace('css/app.css', '#css/app.css'))
+        .pipe(gulp.dest('.'));
+});
+
 gulp.task('git-add-css-files-to-staging', function (cb) {
 
     exec('git add css/*', function (err, stdout, stderr) {
@@ -178,9 +191,18 @@ gulp.task('git-push', function (cb) {
         cb(err);
     });
 });
+
 gulp.task('deploy', function() {
 
-    runSequence('sass-prod', 'update-html-css-link-timestamp', 'git-add-css-files-to-staging', 'git-commit-css-file', 'git-push');
+    runSequence(
+        'sass-prod',
+        'update-html-css-link-timestamp',
+        'uncomment-css-file-in-git-ignore',
+        'git-add-css-files-to-staging',
+        'git-commit-css-file',
+        'git-push',
+        'comment-css-file-in-git-ignore'
+    );
 
 });
 
