@@ -8,4 +8,4 @@ archive
 .travis.yml
 ./src/package.json
 ./src/css/app.css
-src/index.html
+src/css/app.css
