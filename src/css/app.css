@@ -89,9 +89,7 @@ input {
 .container {
   position: relative;
   margin: 0 auto;
-  max-width: 100%;
-  background-color: green;
-  height: 500px; }
+  max-width: 100%; }
   @media (max-width: 990px) {
     .container {
       padding: 0 20px; } }
