@@ -10,12 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-hg": "^1.0.4"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.18.8",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.1",
     "gulp-css-globbing": "^0.1.9",
     "gulp-cssmin": "^0.1.7",
@@ -23,16 +26,21 @@
     "gulp-file-include": "^1.0.0",
     "gulp-filter": "^5.0.0",
     "gulp-html-replace": "^1.6.2",
+    "gulp-imagemin": "^3.2.0",
     "gulp-livereload": "^3.8.1",
+    "gulp-responsive": "^2.7.0",
+    "gulp-responsive-images": "0.0.3",
     "gulp-rev": "^7.1.2",
     "gulp-rev-append": "^0.1.8",
     "gulp-rev-replace": "^0.4.3",
     "gulp-sass": "^3.0.0",
     "gulp-sass-glob": "^1.0.8",
     "gulp-sass-glob-import": "^0.1.0",
+    "gulp-shell": "^0.6.3",
     "gulp-sourcemaps": "^1.9.1",
     "gulp-uglify": "^2.0.0",
     "gulp-uncache": "^0.4.0-beta1",
+    "gulp-uncss": "^1.0.6",
     "jquery": "^3.1.1",
     "node-normalize-scss": "^1.4.0",
     "require-dir": "^0.3.1"
