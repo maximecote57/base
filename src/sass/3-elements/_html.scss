@@ -1,4 +1,4 @@
 html {
-    font-size: 16px;
+    font-size: map_get($others, default-font-size);
     font-family: 'Helvetica Neue', sans-serif;
 }

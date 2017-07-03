@@ -1,0 +1,13 @@
+.list {
+    $block: &;
+    &__item {
+        & + #{&} {
+            #{$block}--is-horizontal & {
+                margin-left: 20px;
+            }
+            #{$block}--is-vertical & {
+                margin-top: 20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+.icon-text {
+    &__icon {
+        margin-right: 5px;
+        max-width: 16px;
+        &--is-bigger {
+            max-width: 32px;
+            margin-right: 15px;
+        }
+    }
+    &__subheader {
+        margin-top: 15px;
+        color: map_get($colors, gray-normal);
+    }
+}

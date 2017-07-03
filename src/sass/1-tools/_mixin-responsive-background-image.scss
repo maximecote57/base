@@ -1,0 +1,14 @@
+// This mixin will create a background image property for each breakpoints, for both normal and retina, except those sent in a list via the $breakpointsToIgnore list argument
+
+@mixin responsive-background-image($filename, $filetype: 'jpg', $breakpointsToIgnore: ()) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints-min {
+        @if index($breakpointsToIgnore, $breakpoint-name) == null {
+            @media screen and (min-width: $breakpoint-value) {
+                background-image: url('/static/img/responsive/#{$filename}_#{$breakpoint-name}.#{$filetype}');
+            }
+            @media screen and (min-width: $breakpoint-value) and (-webkit-min-device-pixel-ratio: 2) {
+                background-image: url('/static/img/responsive/#{$filename}_#{$breakpoint-name}@2x.#{$filetype}');
+            }
+        }
+    }
+}

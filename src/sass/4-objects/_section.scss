@@ -1,5 +1,73 @@
 // Default CSS properties for a section of a page. Basically, it just sets the vertical padding, but you can add other properties like borders
 
 .section {
-    padding: 3rem 0;
+    padding: 100px 0;
+    &--has-sm-padding {
+        padding: 50px 0;
+    }
+    &--has-md-padding {
+        padding: 75px 0;
+    }
+    &--has-no-padding-top {
+        padding-top: 0;
+    }
+    &--has-no-padding-bottom {
+        padding-bottom: 0;
+    }
+    &--has-sm-padding-top {
+        padding-top: 50px;
+    }
+    &--has-sm-padding-bottom {
+        padding-bottom: 50px;
+    }
+    &--has-md-padding-top {
+        padding-top: 75px;
+    }
+    &--has-md-padding-bottom {
+        padding-bottom: 75px;
+    }
+    &--has-no-padding {
+        padding: 0;
+    }
+    &--has-no-padding-top-md-up {
+        @media screen and (min-width: map_get($breakpoints-min, md)) {
+            padding-top: 0;
+        }
+    }
+    &--has-no-padding-top-sm-up {
+        @media screen and (min-width: map_get($breakpoints-min, sm)) {
+            padding-top: 0;
+        }
+    }
+    &--has-sm-padding-bottom-sm-down {
+        @media screen and (max-width: map_get($breakpoints-max, sm)) {
+            padding-bottom: 50px;
+        }
+    }
+    &--has-sm-padding-top-sm-down {
+        @media screen and (max-width: map_get($breakpoints-max, sm)) {
+            padding-top: 50px;
+        }
+    }
+    &--has-sm-padding-bottom-xs-down {
+        @media screen and (max-width: map_get($breakpoints-max, xs)) {
+            padding-bottom: 50px;
+        }
+    }
+    &--has-sm-padding-top-xs-down {
+        @media screen and (max-width: map_get($breakpoints-max, xs)) {
+            padding-top: 50px;
+        }
+    }
+    &--has-no-padding-bottom-xs-down {
+        @media screen and (max-width: map_get($breakpoints-max, xs)) {
+            padding-bottom: 0;
+        }
+    }
+    &__header {
+        margin-bottom: 35px;
+    }
+    &__secondary-title {
+        margin-top: 20px;
+    }
 }

@@ -2,9 +2,11 @@
 // Please use only these values when using z-index
 
 $z-indexes: (
-    lower: 1,
-    low: 5,
-    medium: 10,
-    high: 15,
-    higher: 20
+    lowest: 1,
+    lower: 5,
+    low: 10,
+    medium: 15,
+    high: 20,
+    higher: 25,
+    highest: 30
 );

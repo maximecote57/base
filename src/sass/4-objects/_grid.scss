@@ -1,0 +1,9 @@
+.grid {
+    $default-spacing: 20px;
+    &__container {
+        margin: 0 -#{$default-spacing};
+    }
+    &__col-wrapper {
+        padding: 0 $default-spacing;
+    }
+}
