@@ -1,8 +1,10 @@
-;$(function () {
+;'use strict';
+
+$(function () {
 
     function openModal($modal) {
 
-        var hasDimmer = typeof($modal.data('dimmer') !== "undefined") ? $modal.data('dimmer') : false;
+        var hasDimmer = typeof($modal.data('dimmer')) !== "undefined" ? $modal.data('dimmer') : false;
 
         $modal.addClass('is-visible');
 
@@ -27,7 +29,7 @@
 
     function closeModal($modal) {
 
-        var hasDimmer = typeof($modal.data('dimmer') !== "undefined") ? $modal.data('dimmer') : false;
+        var hasDimmer = typeof($modal.data('dimmer')) !== "undefined" ? $modal.data('dimmer') : false;
 
         $modal.removeClass('is-visible');
 

@@ -1,17 +1,18 @@
-;$(function () {
+;'use strict';
 
+$(function () {
 
     $('.js-accordion').each(function () {
 
         var options = {};
         var $accordion = $(this);
 
-        options.canHaveMultipleItemsOpened = typeof($accordion.data('can-have-multiple-items-opened') !== "undefined") ? $accordion.data('can-have-multiple-items-opened') : false;
-        options.displayMode = typeof($accordion.data('open-item-animation') !== "undefined") ? $accordion.data('open-item-animation') : "toggle";
-        options.slideDuration = typeof($accordion.data('slide-duration') !== "undefined") ? $accordion.data('slide-duration') : 500;
+        options.canHaveMultipleItemsOpened = typeof($accordion.data('can-have-multiple-items-opened')) !== "undefined" ? $accordion.data('can-have-multiple-items-opened') : false;
+        options.displayMode = typeof($accordion.data('open-item-animation')) !== "undefined" ? $accordion.data('open-item-animation') : "toggle";
+        options.slideDuration = typeof($accordion.data('slide-duration')) !== "undefined" ? $accordion.data('slide-duration') : 500;
         options.isScrollToItemOnOpenActivated = typeof($accordion.data('scroll-to-item-when-opened')) !== "undefined" && $accordion.data('scroll-to-item-when-opened');
-        options.scrollOffset = typeof($accordion.data('scroll-offset') !== "undefined") ? $accordion.data('scroll-offset') : 0;
-        options.scrollSpeed = typeof($accordion.data('scroll-to-item-speed') !== "undefined") ? $accordion.data('scroll-to-item-speed') : 500;
+        options.scrollOffset = typeof($accordion.data('scroll-offset')) !== "undefined" ? $accordion.data('scroll-offset') : 0;
+        options.scrollSpeed = typeof($accordion.data('scroll-to-item-speed')) !== "undefined" ? $accordion.data('scroll-to-item-speed') : 500;
 
         function showAccordionItemContent($accordionItemContent) {
 

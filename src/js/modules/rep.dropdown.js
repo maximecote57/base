@@ -10,8 +10,9 @@
 
  */
 
+;'use strict';
 
-;$(function () {
+$(function () {
 
     var $dropdowns = $('.js-dropdown');
     var classToToggle = 'is-opened';
@@ -45,13 +46,32 @@
             })
     }
 
+    function updateDropdown($dropdown, selectedValue) {
+
+        var $dropdownSpans = $dropdown.find('.js-dropdown-list li span');
+        var $dropdownLink = $dropdown.find('.js-dropdown-btn');
+        var $clickedDropdownListItemSpan = $dropdownSpans.filter('[data-value="' + selectedValue  + '"]');
+
+        $dropdownSpans.removeClass('is-selected');
+        $clickedDropdownListItemSpan.addClass('is-selected');
+
+        $dropdownLink
+            .text($clickedDropdownListItemSpan.text())
+            .addClass('is-dirty');
+
+        $dropdown.trigger('change');
+
+    }
+
     function bindListeners() {
-        $('.js-dropdown-btn').click(function(e) {
+
+        $('.js-dropdown-btn').click(function (e) {
+
+            var $dropdownBtn = $(this);
+            var $dropdown = $dropdownBtn.closest('.js-dropdown');
 
             e.preventDefault();
             e.stopPropagation();
-
-            var $dropdown = $(this).closest('.js-dropdown');
 
             // When we click on a dropdown button, we always close currently opened dropdown if it exists
             if(!$dropdown.hasClass(classToToggle)) {
@@ -64,20 +84,13 @@
 
         });
 
-        // When we click on a dropdown item, if it is a span, we update the btn text and trigger a change event
+        // When we click on a dropdown item, if it is a span, we update the btn text, trigger a change event, and close the dropdown
         $('.js-dropdown-list li span').click(function() {
 
-            var $dropdown = $(this).closest('.js-dropdown');
-            var $dropdownLink = $dropdown.find('.js-dropdown-btn');
-            var $dropdownSpans = $dropdown.find('.js-dropdown-list li span');
             var $clickedDropdownListItemSpan =  $(this);
+            var $dropdown = $clickedDropdownListItemSpan.closest('.js-dropdown');
 
-            $dropdownSpans.removeClass('is-selected');
-            $clickedDropdownListItemSpan.addClass('is-selected');
-
-            $dropdownLink.text($clickedDropdownListItemSpan.text());
-            $dropdown.trigger('change');
-
+            updateDropdown($dropdown, $clickedDropdownListItemSpan.data('value'));
             closeOpenedDropdown();
 
         });

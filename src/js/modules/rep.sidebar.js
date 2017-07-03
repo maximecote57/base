@@ -1,10 +1,14 @@
-;$(function () {
+;'use strict';
+
+window.REP = window.REP || {};
+
+$(function () {
 
     var $sidebar =  $('.js-sidebar');
     var $dimmer = $('.js-dimmer');
     var $slidableContent = $('.js-slidable-content');
-    var hasDimmer = typeof($sidebar.data('dimmer') !== "undefined") ? $sidebar.data('dimmer') : false;
-    var mustSlideContent = typeof($sidebar.data('slide-content') !== "undefined") ? $sidebar.data('slide-content') : false;
+    var hasDimmer = typeof($sidebar.data('dimmer')) !== "undefined" ? $sidebar.data('dimmer') : false;
+    var mustSlideContent = typeof($sidebar.data('slide-content')) !== "undefined" ? $sidebar.data('slide-content') : false;
 
     function closeSidebar() {
         $sidebar.removeClass('is-visible');
@@ -17,6 +21,9 @@
         if(mustSlideContent) {
             $slidableContent.removeClass('is-slided')
         }
+
+        $(document).off('click.sidebar');
+
     }
 
     function openSidebar() {
@@ -32,6 +39,13 @@
         if(mustSlideContent) {
             $slidableContent.addClass('is-slided')
         }
+
+        $(document).on('click.sidebar', function(e) {
+            if($(e.target).parents('.js-sidebar').length === 0 && $(e.target).parents('.js-navbar').length === 0 && $(e.target).parents('.js-modal').length === 0) {
+                closeSidebar();
+            }
+        });
+
     }
 
     function toggleSidebar() {
@@ -53,5 +67,7 @@
     }
 
     bindListeners();
+
+    window.REP.closeSidebar = closeSidebar;
 
 })
